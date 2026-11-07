@@ -1,0 +1,1487 @@
+{\rtf1\ansi\ansicpg936\cocoartf2869
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf0 \expnd0\expndtw0\kerning0
+<!DOCTYPE html>\
+<html lang="zh-CN">\
+<head>\
+\'a0 <meta charset="UTF-8">\
+\'a0 <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+\'a0 <title>Windows Web \uc0\u26700 \u38754 </title>\
+\'a0 <style>\
+\'a0 \'a0 :root \{\
+\'a0 \'a0 \'a0 --text: #20232b;\
+\'a0 \'a0 \'a0 --muted: #6b7280;\
+\'a0 \'a0 \'a0 --panel: rgba(248, 249, 253, .95);\
+\'a0 \'a0 \'a0 --taskbar: rgba(241, 243, 249, .82);\
+\'a0 \'a0 \'a0 --window-bg: #f7f8fb;\
+\'a0 \'a0 \'a0 --content-bg: #fff;\
+\'a0 \'a0 \'a0 --accent: #527df3;\
+\'a0 \'a0 \'a0 --line: rgba(110, 120, 140, .18);\
+\'a0 \'a0 \'a0 --shadow: 0 18px 60px rgba(0, 0, 0, .28);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 * \{ box-sizing: border-box; \}\
+\'a0 \'a0 html, body \{ width: 100%; height: 100%; margin: 0; overflow: hidden; \}\
+\'a0 \'a0 body \{\
+\'a0 \'a0 \'a0 color: var(--text);\
+\'a0 \'a0 \'a0 font-family: "Segoe UI", "Microsoft YaHei", sans-serif;\
+\'a0 \'a0 \'a0 background:\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 68% 48%, #4da6ff 0%, transparent 30%),\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 54% 50%, #6470ff 0%, transparent 33%),\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 30% 64%, #414dd1 0%, transparent 34%),\
+\'a0 \'a0 \'a0 \'a0 linear-gradient(135deg, #123f86, #171b58 55%, #071326);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 body.dark \{\
+\'a0 \'a0 \'a0 --text: #f1f3f8;\
+\'a0 \'a0 \'a0 --muted: #b6bece;\
+\'a0 \'a0 \'a0 --panel: rgba(32, 36, 48, .96);\
+\'a0 \'a0 \'a0 --taskbar: rgba(25, 29, 39, .86);\
+\'a0 \'a0 \'a0 --window-bg: #242833;\
+\'a0 \'a0 \'a0 --content-bg: #1d2028;\
+\'a0 \'a0 \'a0 --line: rgba(255,255,255,.13);\
+\'a0 \'a0 \'a0 --shadow: 0 18px 60px rgba(0, 0, 0, .5);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 body.wall-purple \{\
+\'a0 \'a0 \'a0 background:\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 68% 48%, #f7a4ff 0%, transparent 30%),\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 54% 50%, #8878f5 0%, transparent 34%),\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 30% 64%, #552ca6 0%, transparent 35%),\
+\'a0 \'a0 \'a0 \'a0 linear-gradient(135deg, #542a8e, #211c5c 55%, #110c2d);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 body.wall-green \{\
+\'a0 \'a0 \'a0 background:\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 68% 48%, #98f3b2 0%, transparent 30%),\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 54% 50%, #51c7a6 0%, transparent 34%),\
+\'a0 \'a0 \'a0 \'a0 radial-gradient(ellipse at 30% 64%, #247e88 0%, transparent 35%),\
+\'a0 \'a0 \'a0 \'a0 linear-gradient(135deg, #145d63, #143749 55%, #071d2b);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 button, input, textarea \{ font: inherit; \}\
+\'a0 \'a0 button \{ color: inherit; \}\
+\
+\'a0 \'a0 .desktop \{\
+\'a0 \'a0 \'a0 position: absolute;\
+\'a0 \'a0 \'a0 inset: 0 0 48px;\
+\'a0 \'a0 \'a0 padding: 14px;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 flex-direction: column;\
+\'a0 \'a0 \'a0 align-items: flex-start;\
+\'a0 \'a0 \'a0 align-content: flex-start;\
+\'a0 \'a0 \'a0 flex-wrap: wrap;\
+\'a0 \'a0 \'a0 gap: 5px;\
+\'a0 \'a0 \'a0 overflow: auto;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .desktop-icon \{\
+\'a0 \'a0 \'a0 width: 86px;\
+\'a0 \'a0 \'a0 min-height: 82px;\
+\'a0 \'a0 \'a0 padding: 7px 4px;\
+\'a0 \'a0 \'a0 border: 1px solid transparent;\
+\'a0 \'a0 \'a0 border-radius: 5px;\
+\'a0 \'a0 \'a0 color: #fff;\
+\'a0 \'a0 \'a0 text-align: center;\
+\'a0 \'a0 \'a0 text-shadow: 0 1px 3px #000;\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \'a0 cursor: default;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .desktop-icon:hover, .desktop-icon.selected \{\
+\'a0 \'a0 \'a0 background: rgba(255,255,255,.18);\
+\'a0 \'a0 \'a0 border-color: rgba(255,255,255,.2);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .desktop-icon .icon \{\
+\'a0 \'a0 \'a0 display: block;\
+\'a0 \'a0 \'a0 margin-bottom: 5px;\
+\'a0 \'a0 \'a0 font-size: 32px;\
+\'a0 \'a0 \'a0 line-height: 38px;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .taskbar \{\
+\'a0 \'a0 \'a0 position: fixed;\
+\'a0 \'a0 \'a0 z-index: 5000;\
+\'a0 \'a0 \'a0 inset: auto 0 0;\
+\'a0 \'a0 \'a0 height: 48px;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 justify-content: center;\
+\'a0 \'a0 \'a0 background: var(--taskbar);\
+\'a0 \'a0 \'a0 border-top: 1px solid rgba(255,255,255,.4);\
+\'a0 \'a0 \'a0 backdrop-filter: blur(24px);\
+\'a0 \'a0 \'a0 color: var(--text);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .taskbar-center \{ height: 100%; display: flex; align-items: center; gap: 3px; \}\
+\
+\'a0 \'a0 .task-button \{\
+\'a0 \'a0 \'a0 position: relative;\
+\'a0 \'a0 \'a0 width: 42px;\
+\'a0 \'a0 \'a0 height: 40px;\
+\'a0 \'a0 \'a0 display: grid;\
+\'a0 \'a0 \'a0 place-items: center;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 border-radius: 5px;\
+\'a0 \'a0 \'a0 background: transparent;\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \'a0 font-size: 20px;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .task-button:hover, .task-button.active \{ background: rgba(128,140,165,.18); \}\
+\'a0 \'a0 .task-button.open::after \{\
+\'a0 \'a0 \'a0 content: "";\
+\'a0 \'a0 \'a0 position: absolute;\
+\'a0 \'a0 \'a0 bottom: 1px;\
+\'a0 \'a0 \'a0 left: 16px;\
+\'a0 \'a0 \'a0 width: 10px;\
+\'a0 \'a0 \'a0 height: 3px;\
+\'a0 \'a0 \'a0 border-radius: 4px;\
+\'a0 \'a0 \'a0 background: var(--accent);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .win-logo \{\
+\'a0 \'a0 \'a0 width: 21px;\
+\'a0 \'a0 \'a0 height: 21px;\
+\'a0 \'a0 \'a0 display: grid;\
+\'a0 \'a0 \'a0 grid-template-columns: 1fr 1fr;\
+\'a0 \'a0 \'a0 grid-template-rows: 1fr 1fr;\
+\'a0 \'a0 \'a0 gap: 2px;\
+\'a0 \'a0 \'a0 transform: skewY(-5deg);\
+\'a0 \'a0 \}\
+\'a0 \'a0 .win-logo i \{ background: #1684f8; \}\
+\
+\'a0 \'a0 .task-search \{\
+\'a0 \'a0 \'a0 width: 175px;\
+\'a0 \'a0 \'a0 height: 33px;\
+\'a0 \'a0 \'a0 padding: 0 11px;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 gap: 7px;\
+\'a0 \'a0 \'a0 border: 1px solid var(--line);\
+\'a0 \'a0 \'a0 border-radius: 18px;\
+\'a0 \'a0 \'a0 color: var(--text);\
+\'a0 \'a0 \'a0 background: rgba(255,255,255,.58);\
+\'a0 \'a0 \'a0 cursor: text;\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 body.dark .task-search \{ background: rgba(255,255,255,.1); \}\
+\'a0 \'a0 .task-search input \{\
+\'a0 \'a0 \'a0 width: 100%;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 outline: 0;\
+\'a0 \'a0 \'a0 color: inherit;\
+\'a0 \'a0 \'a0 background: transparent;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .tray \{\
+\'a0 \'a0 \'a0 position: absolute;\
+\'a0 \'a0 \'a0 right: 8px;\
+\'a0 \'a0 \'a0 height: 100%;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 gap: 3px;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .tray button \{\
+\'a0 \'a0 \'a0 min-width: 35px;\
+\'a0 \'a0 \'a0 height: 38px;\
+\'a0 \'a0 \'a0 padding: 0 6px;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 border-radius: 5px;\
+\'a0 \'a0 \'a0 color: inherit;\
+\'a0 \'a0 \'a0 background: transparent;\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .tray button:hover \{ background: rgba(128,140,165,.18); \}\
+\'a0 \'a0 .clock \{ min-width: 76px; text-align: center; font-size: 11px; line-height: 1.35; \}\
+\
+\'a0 \'a0 .panel, .context-menu \{\
+\'a0 \'a0 \'a0 display: none;\
+\'a0 \'a0 \'a0 position: fixed;\
+\'a0 \'a0 \'a0 z-index: 4500;\
+\'a0 \'a0 \'a0 color: var(--text);\
+\'a0 \'a0 \'a0 background: var(--panel);\
+\'a0 \'a0 \'a0 border: 1px solid var(--line);\
+\'a0 \'a0 \'a0 border-radius: 9px;\
+\'a0 \'a0 \'a0 box-shadow: var(--shadow);\
+\'a0 \'a0 \'a0 backdrop-filter: blur(25px);\
+\'a0 \'a0 \}\
+\'a0 \'a0 .panel.show, .context-menu.show \{ display: block; \}\
+\
+\'a0 \'a0 .start-menu \{\
+\'a0 \'a0 \'a0 left: 50%;\
+\'a0 \'a0 \'a0 bottom: 57px;\
+\'a0 \'a0 \'a0 transform: translateX(-50%);\
+\'a0 \'a0 \'a0 width: min(570px, calc(100vw - 16px));\
+\'a0 \'a0 \'a0 max-height: calc(100vh - 65px);\
+\'a0 \'a0 \'a0 overflow: auto;\
+\'a0 \'a0 \'a0 padding: 20px 24px 16px;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .start-search \{\
+\'a0 \'a0 \'a0 width: 100%;\
+\'a0 \'a0 \'a0 height: 39px;\
+\'a0 \'a0 \'a0 padding: 0 12px;\
+\'a0 \'a0 \'a0 border: 1px solid var(--line);\
+\'a0 \'a0 \'a0 border-bottom: 2px solid var(--accent);\
+\'a0 \'a0 \'a0 border-radius: 5px;\
+\'a0 \'a0 \'a0 outline: 0;\
+\'a0 \'a0 \'a0 color: var(--text);\
+\'a0 \'a0 \'a0 background: rgba(255,255,255,.5);\
+\'a0 \'a0 \}\
+\'a0 \'a0 body.dark .start-search \{ background: rgba(255,255,255,.1); \}\
+\
+\'a0 \'a0 .heading \{\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 justify-content: space-between;\
+\'a0 \'a0 \'a0 margin: 20px 2px 10px;\
+\'a0 \'a0 \'a0 font-size: 14px;\
+\'a0 \'a0 \'a0 font-weight: 600;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .heading button, .small-button \{\
+\'a0 \'a0 \'a0 padding: 6px 9px;\
+\'a0 \'a0 \'a0 border: 1px solid var(--line);\
+\'a0 \'a0 \'a0 border-radius: 5px;\
+\'a0 \'a0 \'a0 background: rgba(128,140,165,.1);\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \'a0 font-size: 11px;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .app-grid \{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; \}\
+\'a0 \'a0 .app-item \{\
+\'a0 \'a0 \'a0 min-height: 78px;\
+\'a0 \'a0 \'a0 padding: 8px 3px;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 flex-direction: column;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 justify-content: center;\
+\'a0 \'a0 \'a0 gap: 6px;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 border-radius: 6px;\
+\'a0 \'a0 \'a0 color: inherit;\
+\'a0 \'a0 \'a0 background: transparent;\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \'a0 font-size: 11px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .app-item:hover \{ background: rgba(128,140,165,.16); \}\
+\'a0 \'a0 .app-item .icon \{ font-size: 27px; \}\
+\
+\'a0 \'a0 .start-footer \{\
+\'a0 \'a0 \'a0 margin: 18px -24px -16px;\
+\'a0 \'a0 \'a0 padding: 11px 24px;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 justify-content: space-between;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 background: rgba(128,140,165,.1);\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .user \{ display: flex; align-items: center; gap: 9px; \}\
+\'a0 \'a0 .avatar \{\
+\'a0 \'a0 \'a0 width: 29px; height: 29px; display: grid; place-items: center;\
+\'a0 \'a0 \'a0 border-radius: 50%; color: white; background: linear-gradient(135deg,#80b8ff,#526ee7);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .quick-panel, .notifications \{\
+\'a0 \'a0 \'a0 right: 10px;\
+\'a0 \'a0 \'a0 bottom: 57px;\
+\'a0 \'a0 \'a0 width: min(335px, calc(100vw - 16px));\
+\'a0 \'a0 \'a0 padding: 15px;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .quick-grid \{ display: grid; grid-template-columns: 1fr 1fr; gap: 8px; \}\
+\'a0 \'a0 .quick-tile \{\
+\'a0 \'a0 \'a0 min-height: 48px;\
+\'a0 \'a0 \'a0 padding: 9px;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 gap: 8px;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 border-radius: 6px;\
+\'a0 \'a0 \'a0 color: inherit;\
+\'a0 \'a0 \'a0 background: rgba(128,140,165,.15);\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \'a0 text-align: left;\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .quick-tile.on \{ color: white; background: #5578df; \}\
+\'a0 \'a0 .slider-row \{ margin-top: 14px; display: flex; align-items: center; gap: 9px; \}\
+\'a0 \'a0 .slider-row input \{ width: 100%; accent-color: var(--accent); \}\
+\'a0 \'a0 .notification \{\
+\'a0 \'a0 \'a0 margin-top: 10px;\
+\'a0 \'a0 \'a0 padding: 12px;\
+\'a0 \'a0 \'a0 border-radius: 6px;\
+\'a0 \'a0 \'a0 background: rgba(128,140,165,.13);\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \'a0 line-height: 1.55;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .window \{\
+\'a0 \'a0 \'a0 position: absolute;\
+\'a0 \'a0 \'a0 z-index: 100;\
+\'a0 \'a0 \'a0 top: 80px;\
+\'a0 \'a0 \'a0 left: 50%;\
+\'a0 \'a0 \'a0 width: min(820px, calc(100vw - 24px));\
+\'a0 \'a0 \'a0 height: min(550px, calc(100vh - 100px));\
+\'a0 \'a0 \'a0 display: none;\
+\'a0 \'a0 \'a0 flex-direction: column;\
+\'a0 \'a0 \'a0 overflow: hidden;\
+\'a0 \'a0 \'a0 border: 1px solid rgba(255,255,255,.6);\
+\'a0 \'a0 \'a0 border-radius: 8px;\
+\'a0 \'a0 \'a0 color: var(--text);\
+\'a0 \'a0 \'a0 background: var(--window-bg);\
+\'a0 \'a0 \'a0 box-shadow: var(--shadow);\
+\'a0 \'a0 \}\
+\'a0 \'a0 .window.show \{ display: flex; \}\
+\'a0 \'a0 .window.minimized \{ display: none; \}\
+\'a0 \'a0 .window.maximized \{\
+\'a0 \'a0 \'a0 inset: 5px 5px 53px !important;\
+\'a0 \'a0 \'a0 width: auto !important;\
+\'a0 \'a0 \'a0 height: auto !important;\
+\'a0 \'a0 \'a0 transform: none !important;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .titlebar \{\
+\'a0 \'a0 \'a0 height: 38px;\
+\'a0 \'a0 \'a0 min-height: 38px;\
+\'a0 \'a0 \'a0 padding-left: 12px;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 justify-content: space-between;\
+\'a0 \'a0 \'a0 background: var(--window-bg);\
+\'a0 \'a0 \'a0 cursor: move;\
+\'a0 \'a0 \'a0 touch-action: none;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .window-title \{ display: flex; gap: 8px; align-items: center; font-size: 12px; \}\
+\'a0 \'a0 .window-controls \{ height: 100%; display: flex; \}\
+\'a0 \'a0 .window-controls button \{\
+\'a0 \'a0 \'a0 width: 43px;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 color: inherit;\
+\'a0 \'a0 \'a0 background: transparent;\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .window-controls button:hover \{ background: rgba(128,140,165,.18); \}\
+\'a0 \'a0 .window-controls .close:hover \{ color: white; background: #c42b1c; \}\
+\'a0 \'a0 .window-content \{ flex: 1; min-height: 0; overflow: auto; background: var(--content-bg); \}\
+\
+\'a0 \'a0 .toolbar \{\
+\'a0 \'a0 \'a0 min-height: 43px;\
+\'a0 \'a0 \'a0 padding: 5px 10px;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 gap: 6px;\
+\'a0 \'a0 \'a0 border-bottom: 1px solid var(--line);\
+\'a0 \'a0 \}\
+\'a0 \'a0 .tool \{\
+\'a0 \'a0 \'a0 min-width: 32px;\
+\'a0 \'a0 \'a0 height: 30px;\
+\'a0 \'a0 \'a0 padding: 0 8px;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 border-radius: 4px;\
+\'a0 \'a0 \'a0 color: inherit;\
+\'a0 \'a0 \'a0 background: transparent;\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .tool:hover \{ background: rgba(128,140,165,.17); \}\
+\'a0 \'a0 .address \{\
+\'a0 \'a0 \'a0 flex: 1;\
+\'a0 \'a0 \'a0 min-width: 70px;\
+\'a0 \'a0 \'a0 padding: 7px 10px;\
+\'a0 \'a0 \'a0 border: 1px solid var(--line);\
+\'a0 \'a0 \'a0 border-radius: 4px;\
+\'a0 \'a0 \'a0 background: rgba(128,140,165,.07);\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .explorer-layout \{ height: calc(100% - 43px); display: flex; \}\
+\'a0 \'a0 .sidebar \{\
+\'a0 \'a0 \'a0 width: 165px;\
+\'a0 \'a0 \'a0 flex: 0 0 165px;\
+\'a0 \'a0 \'a0 padding: 10px 7px;\
+\'a0 \'a0 \'a0 border-right: 1px solid var(--line);\
+\'a0 \'a0 \}\
+\'a0 \'a0 .nav-item \{\
+\'a0 \'a0 \'a0 padding: 9px;\
+\'a0 \'a0 \'a0 border-radius: 4px;\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .nav-item:hover, .nav-item.selected \{ background: rgba(128,140,165,.15); \}\
+\'a0 \'a0 .files-area \{ flex: 1; padding: 18px; overflow: auto; \}\
+\'a0 \'a0 .files-heading \{ margin: 0 0 15px; font-size: 18px; font-weight: 500; \}\
+\'a0 \'a0 .file-grid \{ display: grid; grid-template-columns: repeat(auto-fill,minmax(105px,1fr)); gap: 8px; \}\
+\'a0 \'a0 .file-item \{\
+\'a0 \'a0 \'a0 min-height: 85px;\
+\'a0 \'a0 \'a0 padding: 10px 5px;\
+\'a0 \'a0 \'a0 overflow: hidden;\
+\'a0 \'a0 \'a0 border: 1px solid transparent;\
+\'a0 \'a0 \'a0 border-radius: 5px;\
+\'a0 \'a0 \'a0 text-align: center;\
+\'a0 \'a0 \'a0 cursor: default;\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \'a0 overflow-wrap: anywhere;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .file-item:hover, .file-item.selected \{\
+\'a0 \'a0 \'a0 border-color: rgba(82,125,243,.35);\
+\'a0 \'a0 \'a0 background: rgba(82,125,243,.09);\
+\'a0 \'a0 \}\
+\'a0 \'a0 .file-item .icon \{ display: block; margin-bottom: 6px; font-size: 30px; \}\
+\'a0 \'a0 .empty \{ color: var(--muted); font-size: 13px; \}\
+\
+\'a0 \'a0 .notepad-wrap \{ height: 100%; display: flex; flex-direction: column; \}\
+\'a0 \'a0 .notepad-menu \{\
+\'a0 \'a0 \'a0 padding: 8px 12px;\
+\'a0 \'a0 \'a0 border-bottom: 1px solid var(--line);\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .notepad-text \{\
+\'a0 \'a0 \'a0 flex: 1;\
+\'a0 \'a0 \'a0 width: 100%;\
+\'a0 \'a0 \'a0 padding: 14px;\
+\'a0 \'a0 \'a0 resize: none;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 outline: 0;\
+\'a0 \'a0 \'a0 color: var(--text);\
+\'a0 \'a0 \'a0 background: var(--content-bg);\
+\'a0 \'a0 \'a0 font: 14px/1.6 Consolas, monospace;\
+\'a0 \'a0 \'a0 user-select: text;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .settings \{ max-width: 680px; padding: 26px; \}\
+\'a0 \'a0 .settings h2 \{ font-weight: 500; \}\
+\'a0 \'a0 .setting-card \{\
+\'a0 \'a0 \'a0 margin: 12px 0;\
+\'a0 \'a0 \'a0 padding: 15px;\
+\'a0 \'a0 \'a0 border: 1px solid var(--line);\
+\'a0 \'a0 \'a0 border-radius: 7px;\
+\'a0 \'a0 \'a0 background: rgba(128,140,165,.06);\
+\'a0 \'a0 \'a0 font-size: 13px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .setting-card p \{ color: var(--muted); font-size: 12px; \}\
+\'a0 \'a0 .setting-card button \{\
+\'a0 \'a0 \'a0 margin: 3px;\
+\'a0 \'a0 \'a0 padding: 8px 11px;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 border-radius: 5px;\
+\'a0 \'a0 \'a0 color: inherit;\
+\'a0 \'a0 \'a0 background: rgba(82,125,243,.16);\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 .calc \{ width: min(340px,100%); margin: 18px auto; padding: 10px; \}\
+\'a0 \'a0 .calc-display \{\
+\'a0 \'a0 \'a0 width: 100%; height: 75px; padding: 10px;\
+\'a0 \'a0 \'a0 border: 0; outline: 0; color: inherit; background: transparent;\
+\'a0 \'a0 \'a0 text-align: right; font-size: 34px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .calc-grid \{ display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; \}\
+\'a0 \'a0 .calc-key \{\
+\'a0 \'a0 \'a0 height: 50px; border: 1px solid var(--line); border-radius: 5px;\
+\'a0 \'a0 \'a0 color: inherit; background: rgba(128,140,165,.1); cursor: pointer;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .calc-key:hover \{ background: rgba(128,140,165,.23); \}\
+\'a0 \'a0 .calc-key.equals \{ color: white; background: var(--accent); \}\
+\
+\'a0 \'a0 .context-menu \{\
+\'a0 \'a0 \'a0 width: 210px;\
+\'a0 \'a0 \'a0 padding: 5px;\
+\'a0 \'a0 \'a0 z-index: 7000;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .context-menu button \{\
+\'a0 \'a0 \'a0 width: 100%;\
+\'a0 \'a0 \'a0 padding: 8px 9px;\
+\'a0 \'a0 \'a0 display: block;\
+\'a0 \'a0 \'a0 border: 0;\
+\'a0 \'a0 \'a0 border-radius: 4px;\
+\'a0 \'a0 \'a0 color: inherit;\
+\'a0 \'a0 \'a0 background: transparent;\
+\'a0 \'a0 \'a0 text-align: left;\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .context-menu button:hover \{ background: rgba(128,140,165,.17); \}\
+\'a0 \'a0 .context-menu .separator \{ height: 1px; margin: 4px; background: var(--line); \}\
+\
+\'a0 \'a0 .toast \{\
+\'a0 \'a0 \'a0 position: fixed;\
+\'a0 \'a0 \'a0 z-index: 8000;\
+\'a0 \'a0 \'a0 right: 16px;\
+\'a0 \'a0 \'a0 bottom: 58px;\
+\'a0 \'a0 \'a0 max-width: min(350px, calc(100vw - 32px));\
+\'a0 \'a0 \'a0 padding: 12px 15px;\
+\'a0 \'a0 \'a0 border: 1px solid var(--line);\
+\'a0 \'a0 \'a0 border-radius: 7px;\
+\'a0 \'a0 \'a0 color: var(--text);\
+\'a0 \'a0 \'a0 background: var(--panel);\
+\'a0 \'a0 \'a0 box-shadow: var(--shadow);\
+\'a0 \'a0 \'a0 font-size: 12px;\
+\'a0 \'a0 \'a0 opacity: 0;\
+\'a0 \'a0 \'a0 transform: translateY(10px);\
+\'a0 \'a0 \'a0 pointer-events: none;\
+\'a0 \'a0 \'a0 transition: .2s;\
+\'a0 \'a0 \}\
+\'a0 \'a0 .toast.show \{ opacity: 1; transform: translateY(0); \}\
+\
+\'a0 \'a0 @media (max-width: 600px) \{\
+\'a0 \'a0 \'a0 .task-search \{ width: 38px; justify-content: center; padding: 0; \}\
+\'a0 \'a0 \'a0 .task-search input \{ display: none; \}\
+\'a0 \'a0 \'a0 .taskbar-center \{ transform: translateX(-18px); \}\
+\'a0 \'a0 \'a0 .app-grid \{ grid-template-columns: repeat(4,1fr); \}\
+\'a0 \'a0 \'a0 .sidebar \{ width: 120px; flex-basis: 120px; \}\
+\'a0 \'a0 \}\
+\'a0 \'a0 @media (max-width: 390px) \{\
+\'a0 \'a0 \'a0 .app-grid \{ grid-template-columns: repeat(3,1fr); \}\
+\'a0 \'a0 \'a0 .task-button \{ width: 36px; \}\
+\'a0 \'a0 \'a0 .taskbar-center \{ gap: 0; \}\
+\'a0 \'a0 \'a0 .sidebar \{ width: 98px; flex-basis: 98px; \}\
+\'a0 \'a0 \}\
+\'a0 </style>\
+</head>\
+<body>\
+\'a0 <main class="desktop" id="desktop"></main>\
+\
+\'a0 <section class="panel start-menu" id="startMenu">\
+\'a0 \'a0 <input class="start-search" id="startSearch" placeholder="\uc0\u25628 \u32034 \u24212 \u29992 \u21644 \u25991 \u20214 " autocomplete="off">\
+\'a0 \'a0 <div class="heading"><span>\uc0\u24050 \u22266 \u23450 </span><button id="allApps">\u25152 \u26377 \u24212 \u29992 \u12288 \'9b</button></div>\
+\'a0 \'a0 <div class="app-grid" id="appGrid">\
+\'a0 \'a0 \'a0 <button class="app-item" data-app="explorer" data-name="\uc0\u25991 \u20214 \u36164 \u28304 \u31649 \u29702 \u22120  \u27492 \u30005 \u33041 ">\
+\'a0 \'a0 \'a0 \'a0 <span class="icon">\uc0\u55357 \u56770 \u65039 </span><span>\u25991 \u20214 \u36164 \u28304 \u31649 \u29702 \u22120 </span>\
+\'a0 \'a0 \'a0 </button>\
+\'a0 \'a0 \'a0 <button class="app-item" data-app="notepad" data-name="\uc0\u35760 \u20107 \u26412  \u25991 \u26412 ">\
+\'a0 \'a0 \'a0 \'a0 <span class="icon">\uc0\u55357 \u56541 </span><span>\u35760 \u20107 \u26412 </span>\
+\'a0 \'a0 \'a0 </button>\
+\'a0 \'a0 \'a0 <button class="app-item" data-app="calculator" data-name="\uc0\u35745 \u31639 \u22120 ">\
+\'a0 \'a0 \'a0 \'a0 <span class="icon">\uc0\u55358 \u56814 </span><span>\u35745 \u31639 \u22120 </span>\
+\'a0 \'a0 \'a0 </button>\
+\'a0 \'a0 \'a0 <button class="app-item" data-app="settings" data-name="\uc0\u35774 \u32622  \u20010 \u24615 \u21270 ">\
+\'a0 \'a0 \'a0 \'a0 <span class="icon">\uc0\u9881 \u65039 </span><span>\u35774 \u32622 </span>\
+\'a0 \'a0 \'a0 </button>\
+\'a0 \'a0 \'a0 <button class="app-item" data-app="trash" data-name="\uc0\u22238 \u25910 \u31449 ">\
+\'a0 \'a0 \'a0 \'a0 <span class="icon">\uc0\u55357 \u56785 \u65039 </span><span>\u22238 \u25910 \u31449 </span>\
+\'a0 \'a0 \'a0 </button>\
+\'a0 \'a0 \'a0 <button class="app-item" data-app="about" data-name="\uc0\u20851 \u20110 ">\
+\'a0 \'a0 \'a0 \'a0 <span class="icon">\uc0\u55358 \u56991 </span><span>\u20851 \u20110 </span>\
+\'a0 \'a0 \'a0 </button>\
+\'a0 \'a0 </div>\
+\'a0 \'a0 <div class="start-footer">\
+\'a0 \'a0 \'a0 <div class="user"><span class="avatar">\uc0\u55357 \u56420 </span><span>\u29992 \u25143 </span></div>\
+\'a0 \'a0 \'a0 <button class="small-button" id="powerButton">\uc0\u9211  \u30005 \u28304 </button>\
+\'a0 \'a0 </div>\
+\'a0 </section>\
+\
+\'a0 <section class="panel quick-panel" id="quickPanel">\
+\'a0 \'a0 <div class="quick-grid">\
+\'a0 \'a0 \'a0 <button class="quick-tile on">\uc0\u55357 \u56566 \u12288 Wi-Fi</button>\
+\'a0 \'a0 \'a0 <button class="quick-tile on">\uc0\u5842 \u12288 \u34013 \u29273 </button>\
+\'a0 \'a0 \'a0 <button class="quick-tile">\uc0\u9992 \u65039 \u12288 \u39134 \u34892 \u27169 \u24335 </button>\
+\'a0 \'a0 \'a0 <button class="quick-tile on">\uc0\u9855 \u12288 \u36741 \u21161 \u21151 \u33021 </button>\
+\'a0 \'a0 </div>\
+\'a0 \'a0 <div class="slider-row">\uc0\u9728 \u65039  <input type="range" min="20" max="100" value="80"></div>\
+\'a0 \'a0 <div class="slider-row">\uc0\u55357 \u56586  <input type="range" min="0" max="100" value="65"></div>\
+\'a0 \'a0 <p style="font-size:12px;color:var(--muted)">\uc0\u55357 \u56587  \u30005 \u27744 \u12288 \u24050 \u25509 \u36890 \u30005 \u28304 </p>\
+\'a0 </section>\
+\
+\'a0 <section class="panel notifications" id="notifications">\
+\'a0 \'a0 <div class="heading" style="margin-top:0"><span>\uc0\u36890 \u30693 </span><button id="clearNotifications">\u20840 \u37096 \u28165 \u38500 </button></div>\
+\'a0 \'a0 <div class="notification" id="notificationCard"><b>\uc0\u8505 \u65039  \u32593 \u39029 \u29256  Windows</b><br>\u25991 \u20214 \u20445 \u23384 \u22312 \u24403 \u21069 \u27983 \u35272 \u22120 \u20013 \u12290 </div>\
+\'a0 \'a0 <div class="notification">\uc0\u27169 \u25311 \u22120 \u19981 \u20250 \u35775 \u38382 \u25110 \u20462 \u25913 \u30005 \u33041 \u19978 \u30340 \u30495 \u23454 \u25991 \u20214 \u12290 </div>\
+\'a0 </section>\
+\
+\'a0 <div class="context-menu" id="contextMenu"></div>\
+\'a0 <div class="toast" id="toast"></div>\
+\
+\'a0 <footer class="taskbar">\
+\'a0 \'a0 <div class="taskbar-center">\
+\'a0 \'a0 \'a0 <button class="task-button" id="startButton" title="\uc0\u24320 \u22987 \u33756 \u21333 ">\
+\'a0 \'a0 \'a0 \'a0 <span class="win-logo"><i></i><i></i><i></i><i></i></span>\
+\'a0 \'a0 \'a0 </button>\
+\'a0 \'a0 \'a0 <label class="task-search" id="taskSearch">\uc0\u55357 \u56590  <input id="taskSearchInput" placeholder="\u25628 \u32034 "></label>\
+\'a0 \'a0 \'a0 <button class="task-button" data-launch="explorer" title="\uc0\u25991 \u20214 \u36164 \u28304 \u31649 \u29702 \u22120 ">\u55357 \u56770 \u65039 </button>\
+\'a0 \'a0 \'a0 <button class="task-button" data-launch="notepad" title="\uc0\u35760 \u20107 \u26412 ">\u55357 \u56541 </button>\
+\'a0 \'a0 \'a0 <button class="task-button" data-launch="calculator" title="\uc0\u35745 \u31639 \u22120 ">\u55358 \u56814 </button>\
+\'a0 \'a0 </div>\
+\'a0 \'a0 <div class="tray">\
+\'a0 \'a0 \'a0 <button id="quickButton" title="\uc0\u24555 \u36895 \u35774 \u32622 ">\u8963 \u12288 \u55357 \u56566  \u55357 \u56586  \u55357 \u56587 </button>\
+\'a0 \'a0 \'a0 <button class="clock" id="clockButton" title="\uc0\u36890 \u30693 \u21644 \u26085 \u26399 ">\
+\'a0 \'a0 \'a0 \'a0 <div id="clockTime"></div><div id="clockDate"></div>\
+\'a0 \'a0 \'a0 </button>\
+\'a0 \'a0 </div>\
+\'a0 </footer>\
+\
+<script>\
+(() => \{\
+\'a0 "use strict";\
+\
+\'a0 const $ = (s, root = document) => root.querySelector(s);\
+\'a0 const $$ = (s, root = document) => [...root.querySelectorAll(s)];\
+\'a0 const STORAGE_KEY = "web-windows-fs-v2";\
+\'a0 const TRASH_KEY = "web-windows-trash-v2";\
+\
+\'a0 const apps = \{\
+\'a0 \'a0 explorer: \{ title: "\uc0\u25991 \u20214 \u36164 \u28304 \u31649 \u29702 \u22120 ", icon: "\u55357 \u56770 \u65039 " \},\
+\'a0 \'a0 notepad: \{ title: "\uc0\u35760 \u20107 \u26412 ", icon: "\u55357 \u56541 " \},\
+\'a0 \'a0 calculator: \{ title: "\uc0\u35745 \u31639 \u22120 ", icon: "\u55358 \u56814 " \},\
+\'a0 \'a0 settings: \{ title: "\uc0\u35774 \u32622 ", icon: "\u9881 \u65039 " \},\
+\'a0 \'a0 trash: \{ title: "\uc0\u22238 \u25910 \u31449 ", icon: "\u55357 \u56785 \u65039 " \},\
+\'a0 \'a0 about: \{ title: "\uc0\u20851 \u20110  Windows Web", icon: "\u55358 \u56991 " \}\
+\'a0 \};\
+\
+\'a0 function id() \{\
+\'a0 \'a0 return "f" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);\
+\'a0 \}\
+\
+\'a0 function folder(name, children = []) \{\
+\'a0 \'a0 return \{ id: id(), name, type: "folder", children \};\
+\'a0 \}\
+\
+\'a0 function file(name, content = "") \{\
+\'a0 \'a0 return \{ id: id(), name, type: "file", content \};\
+\'a0 \}\
+\
+\'a0 function makeInitialFS() \{\
+\'a0 \'a0 return folder("\uc0\u27492 \u30005 \u33041 ", [\
+\'a0 \'a0 \'a0 folder("\uc0\u26700 \u38754 ", [\
+\'a0 \'a0 \'a0 \'a0 folder("\uc0\u26032 \u24314 \u25991 \u20214 \u22841 "),\
+\'a0 \'a0 \'a0 \'a0 file("\uc0\u27426 \u36814 \u20351 \u29992 .txt", "\u27426 \u36814 \u20351 \u29992 \u32593 \u39029 \u29256  Windows \u26700 \u38754 \u65281 \\n\\n\u20320 \u21487 \u20197 \u21491 \u38190 \u26700 \u38754 \u26032 \u24314 \u25991 \u20214 \u25110 \u25991 \u20214 \u22841 \u12290 ")\
+\'a0 \'a0 \'a0 ]),\
+\'a0 \'a0 \'a0 folder("\uc0\u25991 \u26723 "),\
+\'a0 \'a0 \'a0 folder("\uc0\u19979 \u36733 "),\
+\'a0 \'a0 \'a0 folder("\uc0\u22270 \u29255 "),\
+\'a0 \'a0 \'a0 folder("\uc0\u38899 \u20048 "),\
+\'a0 \'a0 \'a0 folder("\uc0\u35270 \u39057 "),\
+\'a0 \'a0 \'a0 folder("\uc0\u26412 \u22320 \u30913 \u30424  (C:)"),\
+\'a0 \'a0 \'a0 folder("\uc0\u26412 \u22320 \u30913 \u30424  (D:)")\
+\'a0 \'a0 ]);\
+\'a0 \}\
+\
+\'a0 function readJSON(key, fallback) \{\
+\'a0 \'a0 try \{\
+\'a0 \'a0 \'a0 const value = JSON.parse(localStorage.getItem(key));\
+\'a0 \'a0 \'a0 return value || fallback;\
+\'a0 \'a0 \} catch \{\
+\'a0 \'a0 \'a0 return fallback;\
+\'a0 \'a0 \}\
+\'a0 \}\
+\
+\'a0 let fs = readJSON(STORAGE_KEY, null);\
+\'a0 if (!fs || fs.type !== "folder" || !Array.isArray(fs.children)) fs = makeInitialFS();\
+\'a0 let trash = readJSON(TRASH_KEY, []);\
+\'a0 if (!Array.isArray(trash)) trash = [];\
+\
+\'a0 const windows = new Map();\
+\'a0 let zIndex = 100;\
+\'a0 let clipboard = null;\
+\'a0 let toastTimer;\
+\'a0 let contextState = null;\
+\
+\'a0 function saveFS() \{\
+\'a0 \'a0 localStorage.setItem(STORAGE_KEY, JSON.stringify(fs));\
+\'a0 \'a0 localStorage.setItem(TRASH_KEY, JSON.stringify(trash));\
+\'a0 \}\
+\
+\'a0 function escapeHTML(value) \{\
+\'a0 \'a0 return String(value).replace(/[&<>"']/g, ch => (\{\
+\'a0 \'a0 \'a0 "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"\
+\'a0 \'a0 \}[ch]));\
+\'a0 \}\
+\
+\'a0 function findNode(nodeId, node = fs) \{\
+\'a0 \'a0 if (node.id === nodeId) return node;\
+\'a0 \'a0 if (node.type === "folder") \{\
+\'a0 \'a0 \'a0 for (const child of node.children) \{\
+\'a0 \'a0 \'a0 \'a0 const found = findNode(nodeId, child);\
+\'a0 \'a0 \'a0 \'a0 if (found) return found;\
+\'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \}\
+\'a0 \'a0 return null;\
+\'a0 \}\
+\
+\'a0 function findParent(nodeId, node = fs) \{\
+\'a0 \'a0 if (node.type !== "folder") return null;\
+\'a0 \'a0 for (const child of node.children) \{\
+\'a0 \'a0 \'a0 if (child.id === nodeId) return node;\
+\'a0 \'a0 \'a0 const found = findParent(nodeId, child);\
+\'a0 \'a0 \'a0 if (found) return found;\
+\'a0 \'a0 \}\
+\'a0 \'a0 return null;\
+\'a0 \}\
+\
+\'a0 function desktopFolder() \{\
+\'a0 \'a0 return fs.children.find(item => item.name === "\uc0\u26700 \u38754 " && item.type === "folder") || fs;\
+\'a0 \}\
+\
+\'a0 function iconFor(node) \{\
+\'a0 \'a0 if (node.type === "folder") return "\uc0\u55357 \u56513 ";\
+\'a0 \'a0 if (/\\.txt$/i.test(node.name)) return "\uc0\u55357 \u56516 ";\
+\'a0 \'a0 return "\uc0\u55357 \u56515 ";\
+\'a0 \}\
+\
+\'a0 function notify(message) \{\
+\'a0 \'a0 const toast = $("#toast");\
+\'a0 \'a0 toast.textContent = message;\
+\'a0 \'a0 toast.classList.add("show");\
+\'a0 \'a0 clearTimeout(toastTimer);\
+\'a0 \'a0 toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);\
+\'a0 \}\
+\
+\'a0 function closePanels() \{\
+\'a0 \'a0 $$(".panel").forEach(panel => panel.classList.remove("show"));\
+\'a0 \'a0 $("#contextMenu").classList.remove("show");\
+\'a0 \}\
+\
+\'a0 function renderDesktop() \{\
+\'a0 \'a0 const desktop = $("#desktop");\
+\'a0 \'a0 const items = desktopFolder().children;\
+\'a0 \'a0 desktop.innerHTML = `\
+\'a0 \'a0 \'a0 <div class="desktop-icon" data-app="explorer"><span class="icon">\uc0\u55357 \u56770 \u65039 </span>\u27492 \u30005 \u33041 </div>\
+\'a0 \'a0 \'a0 <div class="desktop-icon" data-app="notepad"><span class="icon">\uc0\u55357 \u56541 </span>\u35760 \u20107 \u26412 </div>\
+\'a0 \'a0 \'a0 <div class="desktop-icon" data-app="calculator"><span class="icon">\uc0\u55358 \u56814 </span>\u35745 \u31639 \u22120 </div>\
+\'a0 \'a0 \'a0 <div class="desktop-icon" data-app="trash"><span class="icon">$\{trash.length ? "\uc0\u55357 \u56785 \u65039 " : "\u9851 \u65039 "\}</span>\u22238 \u25910 \u31449 </div>\
+\'a0 \'a0 \'a0 $\{items.map(item => `\
+\'a0 \'a0 \'a0 \'a0 <div class="desktop-icon" data-node="$\{escapeHTML(item.id)\}">\
+\'a0 \'a0 \'a0 \'a0 \'a0 <span class="icon">$\{iconFor(item)\}</span>$\{escapeHTML(item.name)\}\
+\'a0 \'a0 \'a0 \'a0 </div>`).join("")\}`;\
+\'a0 \}\
+\
+\'a0 function getExplorerContent() \{\
+\'a0 \'a0 return `\
+\'a0 \'a0 \'a0 <div class="toolbar">\
+\'a0 \'a0 \'a0 \'a0 <button class="tool" data-command="back" title="\uc0\u36820 \u22238 ">\u8592 </button>\
+\'a0 \'a0 \'a0 \'a0 <button class="tool" data-command="forward" title="\uc0\u21069 \u36827 ">\u8594 </button>\
+\'a0 \'a0 \'a0 \'a0 <button class="tool" data-command="up" title="\uc0\u19978 \u19968 \u32423 ">\u8593 </button>\
+\'a0 \'a0 \'a0 \'a0 <div class="address" data-address>\uc0\u55356 \u57312  \u27492 \u30005 \u33041 </div>\
+\'a0 \'a0 \'a0 \'a0 <input class="address" data-filter placeholder="\uc0\u25628 \u32034 \u24403 \u21069 \u25991 \u20214 \u22841 " style="max-width:190px">\
+\'a0 \'a0 \'a0 \'a0 <button class="tool" data-command="new-folder" title="\uc0\u26032 \u24314 \u25991 \u20214 \u22841 ">\u55357 \u56513 \u65291 </button>\
+\'a0 \'a0 \'a0 \'a0 <button class="tool" data-command="new-file" title="\uc0\u26032 \u24314 \u25991 \u26412 \u25991 \u20214 ">\u55357 \u56516 \u65291 </button>\
+\'a0 \'a0 \'a0 \'a0 <button class="tool" data-command="refresh" title="\uc0\u21047 \u26032 ">\u10227 </button>\
+\'a0 \'a0 \'a0 </div>\
+\'a0 \'a0 \'a0 <div class="explorer-layout">\
+\'a0 \'a0 \'a0 \'a0 <aside class="sidebar">\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="nav-item selected" data-location="root">\uc0\u55356 \u57312 \u12288 \u20027 \u39029 </div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="nav-item" data-location="desktop">\uc0\u55357 \u56741 \u65039 \u12288 \u26700 \u38754 </div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="nav-item" data-location="documents">\uc0\u55357 \u56516 \u12288 \u25991 \u26723 </div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="nav-item" data-location="downloads">\uc0\u11015 \u65039 \u12288 \u19979 \u36733 </div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="nav-item" data-location="pictures">\uc0\u55357 \u56764 \u65039 \u12288 \u22270 \u29255 </div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="nav-item" data-location="trash">\uc0\u55357 \u56785 \u65039 \u12288 \u22238 \u25910 \u31449 </div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="nav-item" data-location="root">\uc0\u55357 \u56509 \u12288 \u27492 \u30005 \u33041 </div>\
+\'a0 \'a0 \'a0 \'a0 </aside>\
+\'a0 \'a0 \'a0 \'a0 <div class="files-area" data-files-area></div>\
+\'a0 \'a0 \'a0 </div>`;\
+\'a0 \}\
+\
+\'a0 function openApp(appName, options = \{\}) \{\
+\'a0 \'a0 if (!apps[appName]) return;\
+\'a0 \'a0 closePanels();\
+\
+\'a0 \'a0 let win = windows.get(appName);\
+\'a0 \'a0 if (!win) \{\
+\'a0 \'a0 \'a0 win = document.createElement("section");\
+\'a0 \'a0 \'a0 win.className = "window show";\
+\'a0 \'a0 \'a0 win.dataset.app = appName;\
+\'a0 \'a0 \'a0 win.style.left = `calc(50% - $\{Math.min(windows.size * 16, 75)\}px)`;\
+\'a0 \'a0 \'a0 win.style.top = `$\{75 + Math.min(windows.size * 18, 60)\}px`;\
+\'a0 \'a0 \'a0 win.style.zIndex = ++zIndex;\
+\'a0 \'a0 \'a0 win.innerHTML = `\
+\'a0 \'a0 \'a0 \'a0 <header class="titlebar">\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="window-title"><span>$\{apps[appName].icon\}</span><span>$\{apps[appName].title\}</span></div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="window-controls">\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 <button data-window="minimize" title="\uc0\u26368 \u23567 \u21270 ">\'97</button>\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 <button data-window="maximize" title="\uc0\u26368 \u22823 \u21270 ">\u9633 </button>\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 <button class="close" data-window="close" title="\uc0\u20851 \u38381 ">\'d7</button>\
+\'a0 \'a0 \'a0 \'a0 \'a0 </div>\
+\'a0 \'a0 \'a0 \'a0 </header>\
+\'a0 \'a0 \'a0 \'a0 <div class="window-content">$\{contentFor(appName)\}</div>`;\
+\'a0 \'a0 \'a0 document.body.appendChild(win);\
+\'a0 \'a0 \'a0 windows.set(appName, win);\
+\'a0 \'a0 \'a0 attachWindowEvents(win);\
+\'a0 \'a0 \} else \{\
+\'a0 \'a0 \'a0 win.classList.remove("minimized");\
+\'a0 \'a0 \'a0 win.classList.add("show");\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 if (appName === "explorer" && options.folderId) \{\
+\'a0 \'a0 \'a0 showFolder(win, options.folderId);\
+\'a0 \'a0 \}\
+\'a0 \'a0 if (appName === "notepad" && options.fileId) \{\
+\'a0 \'a0 \'a0 loadTextFile(win, options.fileId);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 focusWindow(win);\
+\'a0 \'a0 updateTaskbar();\
+\'a0 \}\
+\
+\'a0 function contentFor(appName) \{\
+\'a0 \'a0 if (appName === "explorer") return getExplorerContent();\
+\
+\'a0 \'a0 if (appName === "notepad") \{\
+\'a0 \'a0 \'a0 return `<div class="notepad-wrap">\
+\'a0 \'a0 \'a0 \'a0 <div class="notepad-menu">\
+\'a0 \'a0 \'a0 \'a0 \'a0 <button class="tool" data-note="new">\uc0\u26032 \u24314 </button>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <button class="tool" data-note="save">\uc0\u20445 \u23384 </button>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <span data-note-name>\uc0\u26410 \u21629 \u21517 .txt</span>\
+\'a0 \'a0 \'a0 \'a0 </div>\
+\'a0 \'a0 \'a0 \'a0 <textarea class="notepad-text" spellcheck="false" placeholder="\uc0\u22312 \u36825 \u37324 \u36755 \u20837 \u25991 \u23383 \'85"></textarea>\
+\'a0 \'a0 \'a0 </div>`;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 if (appName === "calculator") \{\
+\'a0 \'a0 \'a0 return `<div class="calc">\
+\'a0 \'a0 \'a0 \'a0 <input class="calc-display" value="0" readonly>\
+\'a0 \'a0 \'a0 \'a0 <div class="calc-grid">\
+\'a0 \'a0 \'a0 \'a0 \'a0 $\{["C","\uc0\u9003 ","%","\'f7","7","8","9","\'d7","4","5","6","\u8722 ","1","2","3","+","\'b1","0",".","="]\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 .map(key => `<button class="calc-key" data-calc="$\{key\}">$\{key\}</button>`).join("")\}\
+\'a0 \'a0 \'a0 \'a0 </div>\
+\'a0 \'a0 \'a0 </div>`;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 if (appName === "settings") \{\
+\'a0 \'a0 \'a0 return `<div class="settings">\
+\'a0 \'a0 \'a0 \'a0 <h2>\uc0\u20010 \u24615 \u21270 </h2>\
+\'a0 \'a0 \'a0 \'a0 <div class="setting-card"><b>\uc0\u20027 \u39064 \u27169 \u24335 </b><p>\u20999 \u25442 \u27169 \u25311 \u26700 \u38754 \u30340 \u27973 \u33394 \u25110 \u28145 \u33394 \u22806 \u35266 \u12290 </p>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <button data-setting="theme">\uc0\u20999 \u25442 \u28145 \u33394  / \u27973 \u33394 \u27169 \u24335 </button></div>\
+\'a0 \'a0 \'a0 \'a0 <div class="setting-card"><b>\uc0\u26700 \u38754 \u32972 \u26223 </b><p>\u36873 \u25321 \u19968 \u20010 \u28176 \u21464 \u32972 \u26223 \u20027 \u39064 \u12290 </p>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <button data-wallpaper="blue">\uc0\u34013 \u33394 </button>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <button data-wallpaper="purple">\uc0\u32043 \u33394 </button>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <button data-wallpaper="green">\uc0\u32511 \u33394 </button></div>\
+\'a0 \'a0 \'a0 \'a0 <div class="setting-card"><b>\uc0\u23384 \u20648 \u35828 \u26126 </b><p>\u25991 \u20214 \u20445 \u23384 \u22312 \u24403 \u21069 \u27983 \u35272 \u22120 \u30340 \u26412 \u22320 \u23384 \u20648 \u20013 \u12290 \u28165 \u38500 \u27983 \u35272 \u22120 \u25968 \u25454 \u21487 \u33021 \u20250 \u21024 \u38500 \u36825 \u20123 \u25991 \u20214 \u12290 </p></div>\
+\'a0 \'a0 \'a0 </div>`;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 if (appName === "trash") \{\
+\'a0 \'a0 \'a0 return `<div class="toolbar">\
+\'a0 \'a0 \'a0 \'a0 <button class="tool" data-trash="restore">\uc0\u36824 \u21407 </button>\
+\'a0 \'a0 \'a0 \'a0 <button class="tool" data-trash="empty">\uc0\u28165 \u31354 \u22238 \u25910 \u31449 </button>\
+\'a0 \'a0 \'a0 </div>\
+\'a0 \'a0 \'a0 <div class="files-area" data-trash-area></div>`;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 return `<div style="max-width:550px;margin:55px auto;padding:20px;text-align:center">\
+\'a0 \'a0 \'a0 <div style="font-size:56px">\uc0\u55358 \u56991 </div><h2>Windows Web \u26700 \u38754 </h2>\
+\'a0 \'a0 \'a0 <p style="color:var(--muted);line-height:1.7">\
+\'a0 \'a0 \'a0 \'a0 \uc0\u20351 \u29992  HTML\u12289 CSS \u21644  JavaScript \u26500 \u24314 \u30340 \u26700 \u38754 \u27169 \u25311 \u22120 \u12290 \u23427 \u19981 \u20250 \u36816 \u34892  Windows \u31243 \u24207 \u65292 \u20063 \u19981 \u20250 \u35775 \u38382 \u30005 \u33041 \u30495 \u23454 \u25991 \u20214 \u12290 \
+\'a0 \'a0 \'a0 </p><p style="color:var(--muted);font-size:12px">\uc0\u29256 \u26412  2.0</p></div>`;\
+\'a0 \}\
+\
+\'a0 function focusWindow(win) \{\
+\'a0 \'a0 win.style.zIndex = ++zIndex;\
+\'a0 \'a0 $$(".window").forEach(item => item.classList.remove("focused"));\
+\'a0 \'a0 win.classList.add("focused");\
+\'a0 \}\
+\
+\'a0 function attachWindowEvents(win) \{\
+\'a0 \'a0 const titlebar = $(".titlebar", win);\
+\'a0 \'a0 let dragging = false;\
+\'a0 \'a0 let dx = 0;\
+\'a0 \'a0 let dy = 0;\
+\
+\'a0 \'a0 win.addEventListener("pointerdown", () => focusWindow(win));\
+\'a0 \'a0 titlebar.addEventListener("pointerdown", event => \{\
+\'a0 \'a0 \'a0 if (event.target.closest(".window-controls") || win.classList.contains("maximized")) return;\
+\'a0 \'a0 \'a0 dragging = true;\
+\'a0 \'a0 \'a0 const rect = win.getBoundingClientRect();\
+\'a0 \'a0 \'a0 dx = event.clientX - rect.left;\
+\'a0 \'a0 \'a0 dy = event.clientY - rect.top;\
+\'a0 \'a0 \'a0 win.style.left = rect.left + "px";\
+\'a0 \'a0 \'a0 win.style.top = rect.top + "px";\
+\'a0 \'a0 \'a0 win.style.transform = "none";\
+\'a0 \'a0 \'a0 titlebar.setPointerCapture(event.pointerId);\
+\'a0 \'a0 \});\
+\'a0 \'a0 titlebar.addEventListener("pointermove", event => \{\
+\'a0 \'a0 \'a0 if (!dragging) return;\
+\'a0 \'a0 \'a0 win.style.left = Math.max(0, event.clientX - dx) + "px";\
+\'a0 \'a0 \'a0 win.style.top = Math.max(0, event.clientY - dy) + "px";\
+\'a0 \'a0 \});\
+\'a0 \'a0 titlebar.addEventListener("pointerup", () => dragging = false);\
+\'a0 \'a0 titlebar.addEventListener("pointercancel", () => dragging = false);\
+\
+\'a0 \'a0 win.addEventListener("click", event => \{\
+\'a0 \'a0 \'a0 const action = event.target.closest("[data-window]");\
+\'a0 \'a0 \'a0 if (action) \{\
+\'a0 \'a0 \'a0 \'a0 const type = action.dataset.window;\
+\'a0 \'a0 \'a0 \'a0 if (type === "close") \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 windows.delete(win.dataset.app);\
+\'a0 \'a0 \'a0 \'a0 \'a0 win.remove();\
+\'a0 \'a0 \'a0 \'a0 \'a0 updateTaskbar();\
+\'a0 \'a0 \'a0 \'a0 \} else if (type === "minimize") \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 win.classList.add("minimized");\
+\'a0 \'a0 \'a0 \'a0 \'a0 updateTaskbar();\
+\'a0 \'a0 \'a0 \'a0 \} else if (type === "maximize") \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 toggleMaximize(win);\
+\'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0 return;\
+\'a0 \'a0 \'a0 \}\
+\
+\'a0 \'a0 \'a0 const cmd = event.target.closest("[data-command]");\
+\'a0 \'a0 \'a0 if (cmd) return runExplorerCommand(win, cmd.dataset.command);\
+\
+\'a0 \'a0 \'a0 const nav = event.target.closest("[data-location]");\
+\'a0 \'a0 \'a0 if (nav) return goLocation(win, nav.dataset.location);\
+\
+\'a0 \'a0 \'a0 const fileItem = event.target.closest("[data-file-id]");\
+\'a0 \'a0 \'a0 if (fileItem) \{\
+\'a0 \'a0 \'a0 \'a0 $$(".file-item", win).forEach(item => item.classList.remove("selected"));\
+\'a0 \'a0 \'a0 \'a0 fileItem.classList.add("selected");\
+\'a0 \'a0 \'a0 \'a0 win.dataset.selectedFile = fileItem.dataset.fileId;\
+\'a0 \'a0 \'a0 \'a0 if (event.detail === 2) openNode(fileItem.dataset.fileId);\
+\'a0 \'a0 \'a0 \'a0 return;\
+\'a0 \'a0 \'a0 \}\
+\
+\'a0 \'a0 \'a0 const noteAction = event.target.closest("[data-note]");\
+\'a0 \'a0 \'a0 if (noteAction) return noteCommand(win, noteAction.dataset.note);\
+\
+\'a0 \'a0 \'a0 const calcKey = event.target.closest("[data-calc]");\
+\'a0 \'a0 \'a0 if (calcKey) return calculatorKey(win, calcKey.dataset.calc);\
+\
+\'a0 \'a0 \'a0 const setting = event.target.closest("[data-setting]");\
+\'a0 \'a0 \'a0 if (setting) \{\
+\'a0 \'a0 \'a0 \'a0 document.body.classList.toggle("dark");\
+\'a0 \'a0 \'a0 \'a0 localStorage.setItem("web-windows-dark", document.body.classList.contains("dark"));\
+\'a0 \'a0 \'a0 \'a0 return;\
+\'a0 \'a0 \'a0 \}\
+\
+\'a0 \'a0 \'a0 const wallpaper = event.target.closest("[data-wallpaper]");\
+\'a0 \'a0 \'a0 if (wallpaper) return setWallpaper(wallpaper.dataset.wallpaper);\
+\
+\'a0 \'a0 \'a0 const trashAction = event.target.closest("[data-trash]");\
+\'a0 \'a0 \'a0 if (trashAction) \{\
+\'a0 \'a0 \'a0 \'a0 if (trashAction.dataset.trash === "empty") emptyTrash();\
+\'a0 \'a0 \'a0 \'a0 if (trashAction.dataset.trash === "restore") restoreSelected(win);\
+\'a0 \'a0 \'a0 \'a0 return;\
+\'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \});\
+\
+\'a0 \'a0 win.addEventListener("input", event => \{\
+\'a0 \'a0 \'a0 if (event.target.matches("[data-filter]")) renderExplorer(win);\
+\'a0 \'a0 \'a0 if (event.target.matches(".notepad-text")) \{\
+\'a0 \'a0 \'a0 \'a0 const fileId = win.dataset.fileId;\
+\'a0 \'a0 \'a0 \'a0 const node = fileId && findNode(fileId);\
+\'a0 \'a0 \'a0 \'a0 if (node) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 node.content = event.target.value;\
+\'a0 \'a0 \'a0 \'a0 \'a0 saveFS();\
+\'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \});\
+\
+\'a0 \'a0 win.addEventListener("contextmenu", event => \{\
+\'a0 \'a0 \'a0 const item = event.target.closest("[data-file-id]");\
+\'a0 \'a0 \'a0 if (item) \{\
+\'a0 \'a0 \'a0 \'a0 event.preventDefault();\
+\'a0 \'a0 \'a0 \'a0 showContextMenu(event.clientX, event.clientY, \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 place: "explorer",\
+\'a0 \'a0 \'a0 \'a0 \'a0 nodeId: item.dataset.fileId,\
+\'a0 \'a0 \'a0 \'a0 \'a0 folderId: win.dataset.folderId || fs.id,\
+\'a0 \'a0 \'a0 \'a0 \'a0 app: win.dataset.app\
+\'a0 \'a0 \'a0 \'a0 \});\
+\'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \});\
+\
+\'a0 \'a0 if (win.dataset.app === "explorer") \{\
+\'a0 \'a0 \'a0 win.dataset.folderId = fs.id;\
+\'a0 \'a0 \'a0 renderExplorer(win);\
+\'a0 \'a0 \}\
+\'a0 \'a0 if (win.dataset.app === "trash") renderTrash(win);\
+\'a0 \}\
+\
+\'a0 function toggleMaximize(win) \{\
+\'a0 \'a0 if (win.classList.toggle("maximized")) \{\
+\'a0 \'a0 \'a0 win.style.transform = "none";\
+\'a0 \'a0 \} else \{\
+\'a0 \'a0 \'a0 win.style.left = "50%";\
+\'a0 \'a0 \'a0 win.style.top = "80px";\
+\'a0 \'a0 \'a0 win.style.transform = "translateX(-50%)";\
+\'a0 \'a0 \'a0 win.style.width = "";\
+\'a0 \'a0 \'a0 win.style.height = "";\
+\'a0 \'a0 \}\
+\'a0 \}\
+\
+\'a0 function updateTaskbar() \{\
+\'a0 \'a0 $$("[data-launch]").forEach(button => \{\
+\'a0 \'a0 \'a0 const win = windows.get(button.dataset.launch);\
+\'a0 \'a0 \'a0 button.classList.toggle("open", Boolean(win));\
+\'a0 \'a0 \'a0 button.classList.toggle("active", Boolean(win && !win.classList.contains("minimized")));\
+\'a0 \'a0 \});\
+\'a0 \}\
+\
+\'a0 function showFolder(win, folderId) \{\
+\'a0 \'a0 const node = findNode(folderId);\
+\'a0 \'a0 if (!node || node.type !== "folder") return;\
+\'a0 \'a0 win.dataset.folderId = folderId;\
+\'a0 \'a0 renderExplorer(win);\
+\'a0 \}\
+\
+\'a0 function renderExplorer(win) \{\
+\'a0 \'a0 const folderId = win.dataset.folderId || fs.id;\
+\'a0 \'a0 const current = findNode(folderId);\
+\'a0 \'a0 if (!current || current.type !== "folder") \{\
+\'a0 \'a0 \'a0 win.dataset.folderId = fs.id;\
+\'a0 \'a0 \'a0 return renderExplorer(win);\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 const address = $("[data-address]", win);\
+\'a0 \'a0 const area = $("[data-files-area]", win);\
+\'a0 \'a0 if (!area) return;\
+\'a0 \'a0 address.textContent = "\uc0\u55356 \u57312 \u12288 " + current.name;\
+\
+\'a0 \'a0 const query = ($("[data-filter]", win)?.value || "").trim().toLowerCase();\
+\'a0 \'a0 const items = current.children.filter(node => node.name.toLowerCase().includes(query));\
+\
+\'a0 \'a0 area.innerHTML = `\
+\'a0 \'a0 \'a0 <h2 class="files-heading">$\{escapeHTML(current.name)\}</h2>\
+\'a0 \'a0 \'a0 $\{items.length ? `<div class="file-grid">$\{items.map(node => `\
+\'a0 \'a0 \'a0 \'a0 <div class="file-item" data-file-id="$\{escapeHTML(node.id)\}" title="$\{escapeHTML(node.name)\}">\
+\'a0 \'a0 \'a0 \'a0 \'a0 <span class="icon">$\{iconFor(node)\}</span>$\{escapeHTML(node.name)\}\
+\'a0 \'a0 \'a0 \'a0 </div>`).join("")\}</div>` : `<p class="empty">\uc0\u27492 \u25991 \u20214 \u22841 \u20026 \u31354 \u12290 \u21491 \u38190 \u31354 \u30333 \u22788 \u25110 \u20351 \u29992 \u24037 \u20855 \u26639 \u21019 \u24314 \u25991 \u20214 \u12290 </p>`\}`;\
+\'a0 \}\
+\
+\'a0 function renderTrash(win) \{\
+\'a0 \'a0 const area = $("[data-trash-area]", win);\
+\'a0 \'a0 if (!area) return;\
+\'a0 \'a0 area.innerHTML = trash.length\
+\'a0 \'a0 \'a0 ? `<div class="file-grid">$\{trash.map(entry => `\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="file-item" data-trash-id="$\{escapeHTML(entry.node.id)\}">\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 <span class="icon">$\{iconFor(entry.node)\}</span>$\{escapeHTML(entry.node.name)\}\
+\'a0 \'a0 \'a0 \'a0 \'a0 </div>`).join("")\}</div>`\
+\'a0 \'a0 \'a0 : `<p class="empty">\uc0\u22238 \u25910 \u31449 \u20026 \u31354 \u12290 </p>`;\
+\
+\'a0 \'a0 $$("[data-trash-id]", win).forEach(item => \{\
+\'a0 \'a0 \'a0 item.addEventListener("click", () => \{\
+\'a0 \'a0 \'a0 \'a0 $$("[data-trash-id]", win).forEach(other => other.classList.remove("selected"));\
+\'a0 \'a0 \'a0 \'a0 item.classList.add("selected");\
+\'a0 \'a0 \'a0 \'a0 win.dataset.selectedTrash = item.dataset.trashId;\
+\'a0 \'a0 \'a0 \});\
+\'a0 \'a0 \'a0 item.addEventListener("dblclick", () => restoreItem(item.dataset.trashId));\
+\'a0 \'a0 \});\
+\'a0 \}\
+\
+\'a0 function createItem(parentId, type) \{\
+\'a0 \'a0 const parent = findNode(parentId);\
+\'a0 \'a0 if (!parent || parent.type !== "folder") return;\
+\
+\'a0 \'a0 const defaultName = type === "folder" ? "\uc0\u26032 \u24314 \u25991 \u20214 \u22841 " : "\u26032 \u24314 \u25991 \u26412 \u25991 \u26723 .txt";\
+\'a0 \'a0 const name = prompt(type === "folder" ? "\uc0\u35831 \u36755 \u20837 \u25991 \u20214 \u22841 \u21517 \u31216 \u65306 " : "\u35831 \u36755 \u20837 \u25991 \u20214 \u21517 \u31216 \u65306 ", defaultName);\
+\'a0 \'a0 if (name === null) return;\
+\
+\'a0 \'a0 const cleanName = name.trim();\
+\'a0 \'a0 if (!cleanName) return notify("\uc0\u21517 \u31216 \u19981 \u33021 \u20026 \u31354 ");\
+\'a0 \'a0 if (parent.children.some(item => item.name.toLowerCase() === cleanName.toLowerCase())) \{\
+\'a0 \'a0 \'a0 return notify("\uc0\u35813 \u20301 \u32622 \u24050 \u26377 \u21516 \u21517 \u25991 \u20214 \u25110 \u25991 \u20214 \u22841 ");\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 const node = type === "folder" ? folder(cleanName) : file(cleanName);\
+\'a0 \'a0 parent.children.push(node);\
+\'a0 \'a0 saveFS();\
+\'a0 \'a0 refreshAll();\
+\'a0 \'a0 notify(type === "folder" ? "\uc0\u25991 \u20214 \u22841 \u24050 \u21019 \u24314 " : "\u25991 \u20214 \u24050 \u21019 \u24314 ");\
+\'a0 \}\
+\
+\'a0 function renameItem(nodeId) \{\
+\'a0 \'a0 const node = findNode(nodeId);\
+\'a0 \'a0 const parent = findParent(nodeId);\
+\'a0 \'a0 if (!node || !parent) return;\
+\'a0 \'a0 const name = prompt("\uc0\u35831 \u36755 \u20837 \u26032 \u21517 \u31216 \u65306 ", node.name);\
+\'a0 \'a0 if (name === null) return;\
+\'a0 \'a0 const cleanName = name.trim();\
+\'a0 \'a0 if (!cleanName) return notify("\uc0\u21517 \u31216 \u19981 \u33021 \u20026 \u31354 ");\
+\'a0 \'a0 if (parent.children.some(item => item.id !== nodeId && item.name.toLowerCase() === cleanName.toLowerCase())) \{\
+\'a0 \'a0 \'a0 return notify("\uc0\u35813 \u20301 \u32622 \u24050 \u26377 \u21516 \u21517 \u25991 \u20214 \u25110 \u25991 \u20214 \u22841 ");\
+\'a0 \'a0 \}\
+\'a0 \'a0 node.name = cleanName;\
+\'a0 \'a0 saveFS();\
+\'a0 \'a0 refreshAll();\
+\'a0 \'a0 notify("\uc0\u24050 \u37325 \u21629 \u21517 ");\
+\'a0 \}\
+\
+\'a0 function deleteItem(nodeId) \{\
+\'a0 \'a0 const parent = findParent(nodeId);\
+\'a0 \'a0 if (!parent) return;\
+\'a0 \'a0 const index = parent.children.findIndex(item => item.id === nodeId);\
+\'a0 \'a0 if (index < 0) return;\
+\'a0 \'a0 const [node] = parent.children.splice(index, 1);\
+\'a0 \'a0 trash.push(\{ node, parentId: parent.id, deletedAt: Date.now() \});\
+\'a0 \'a0 saveFS();\
+\'a0 \'a0 refreshAll();\
+\'a0 \'a0 notify("\uc0\u39033 \u30446 \u24050 \u31227 \u21040 \u22238 \u25910 \u31449 ");\
+\'a0 \}\
+\
+\'a0 function restoreItem(nodeId) \{\
+\'a0 \'a0 const index = trash.findIndex(entry => entry.node.id === nodeId);\
+\'a0 \'a0 if (index < 0) return;\
+\'a0 \'a0 const entry = trash[index];\
+\'a0 \'a0 let parent = findNode(entry.parentId);\
+\'a0 \'a0 if (!parent || parent.type !== "folder") parent = desktopFolder();\
+\
+\'a0 \'a0 if (parent.children.some(item => item.name.toLowerCase() === entry.node.name.toLowerCase())) \{\
+\'a0 \'a0 \'a0 entry.node.name = "\uc0\u36824 \u21407 \u30340  " + entry.node.name;\
+\'a0 \'a0 \}\
+\'a0 \'a0 parent.children.push(entry.node);\
+\'a0 \'a0 trash.splice(index, 1);\
+\'a0 \'a0 saveFS();\
+\'a0 \'a0 refreshAll();\
+\'a0 \'a0 notify("\uc0\u24050 \u36824 \u21407 ");\
+\'a0 \}\
+\
+\'a0 function restoreSelected(win) \{\
+\'a0 \'a0 const selected = win.dataset.selectedTrash;\
+\'a0 \'a0 if (!selected) return notify("\uc0\u35831 \u20808 \u36873 \u25321 \u35201 \u36824 \u21407 \u30340 \u39033 \u30446 ");\
+\'a0 \'a0 restoreItem(selected);\
+\'a0 \}\
+\
+\'a0 function emptyTrash() \{\
+\'a0 \'a0 if (!trash.length) return notify("\uc0\u22238 \u25910 \u31449 \u24050 \u32463 \u26159 \u31354 \u30340 ");\
+\'a0 \'a0 if (!confirm("\uc0\u30830 \u23450 \u27704 \u20037 \u21024 \u38500 \u22238 \u25910 \u31449 \u20013 \u30340 \u25152 \u26377 \u39033 \u30446 \u21527 \u65311 ")) return;\
+\'a0 \'a0 trash = [];\
+\'a0 \'a0 saveFS();\
+\'a0 \'a0 refreshAll();\
+\'a0 \'a0 notify("\uc0\u22238 \u25910 \u31449 \u24050 \u28165 \u31354 ");\
+\'a0 \}\
+\
+\'a0 function refreshAll() \{\
+\'a0 \'a0 renderDesktop();\
+\'a0 \'a0 for (const win of windows.values()) \{\
+\'a0 \'a0 \'a0 if (win.dataset.app === "explorer") renderExplorer(win);\
+\'a0 \'a0 \'a0 if (win.dataset.app === "trash") renderTrash(win);\
+\'a0 \'a0 \}\
+\'a0 \}\
+\
+\'a0 function openNode(nodeId) \{\
+\'a0 \'a0 const node = findNode(nodeId);\
+\'a0 \'a0 if (!node) return;\
+\'a0 \'a0 if (node.type === "folder") \{\
+\'a0 \'a0 \'a0 openApp("explorer", \{ folderId: node.id \});\
+\'a0 \'a0 \} else \{\
+\'a0 \'a0 \'a0 openApp("notepad", \{ fileId: node.id \});\
+\'a0 \'a0 \}\
+\'a0 \}\
+\
+\'a0 function copyOrCut(nodeId, mode) \{\
+\'a0 \'a0 const node = findNode(nodeId);\
+\'a0 \'a0 if (!node) return;\
+\'a0 \'a0 clipboard = \{ nodeId, mode \};\
+\'a0 \'a0 notify(mode === "copy" ? "\uc0\u24050 \u22797 \u21046 " : "\u24050 \u21098 \u20999 ");\
+\'a0 \}\
+\
+\'a0 function pasteInto(parentId) \{\
+\'a0 \'a0 if (!clipboard) return notify("\uc0\u21098 \u36148 \u26495 \u20026 \u31354 ");\
+\'a0 \'a0 const source = findNode(clipboard.nodeId);\
+\'a0 \'a0 const target = findNode(parentId);\
+\'a0 \'a0 if (!source || !target || target.type !== "folder") return notify("\uc0\u26080 \u27861 \u31896 \u36148 ");\
+\
+\'a0 \'a0 if (source.id === target.id || (source.type === "folder" && containsNode(source, target.id))) \{\
+\'a0 \'a0 \'a0 return notify("\uc0\u19981 \u33021 \u23558 \u25991 \u20214 \u22841 \u31896 \u36148 \u21040 \u33258 \u36523 \u20869 \u37096 ");\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 if (target.children.some(item => item.name.toLowerCase() === source.name.toLowerCase())) \{\
+\'a0 \'a0 \'a0 return notify("\uc0\u30446 \u26631 \u20301 \u32622 \u24050 \u26377 \u21516 \u21517 \u39033 \u30446 ");\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 if (clipboard.mode === "cut") \{\
+\'a0 \'a0 \'a0 const parent = findParent(source.id);\
+\'a0 \'a0 \'a0 if (!parent) return;\
+\'a0 \'a0 \'a0 parent.children = parent.children.filter(item => item.id !== source.id);\
+\'a0 \'a0 \'a0 target.children.push(source);\
+\'a0 \'a0 \'a0 clipboard = null;\
+\'a0 \'a0 \} else \{\
+\'a0 \'a0 \'a0 target.children.push(cloneNode(source));\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 saveFS();\
+\'a0 \'a0 refreshAll();\
+\'a0 \'a0 notify("\uc0\u24050 \u31896 \u36148 ");\
+\'a0 \}\
+\
+\'a0 function containsNode(root, targetId) \{\
+\'a0 \'a0 if (root.id === targetId) return true;\
+\'a0 \'a0 return root.type === "folder" && root.children.some(child => containsNode(child, targetId));\
+\'a0 \}\
+\
+\'a0 function cloneNode(node) \{\
+\'a0 \'a0 const copy = \{ ...node, id: id() \};\
+\'a0 \'a0 if (node.type === "folder") copy.children = node.children.map(cloneNode);\
+\'a0 \'a0 return copy;\
+\'a0 \}\
+\
+\'a0 function runExplorerCommand(win, command) \{\
+\'a0 \'a0 const folderId = win.dataset.folderId || fs.id;\
+\'a0 \'a0 if (command === "new-folder") return createItem(folderId, "folder");\
+\'a0 \'a0 if (command === "new-file") return createItem(folderId, "file");\
+\'a0 \'a0 if (command === "refresh") \{\
+\'a0 \'a0 \'a0 renderExplorer(win);\
+\'a0 \'a0 \'a0 return notify("\uc0\u24050 \u21047 \u26032 ");\
+\'a0 \'a0 \}\
+\'a0 \'a0 if (command === "up") \{\
+\'a0 \'a0 \'a0 const parent = findParent(folderId);\
+\'a0 \'a0 \'a0 if (parent) showFolder(win, parent.id);\
+\'a0 \'a0 \'a0 return;\
+\'a0 \'a0 \}\
+\'a0 \'a0 if (command === "back" || command === "forward") \{\
+\'a0 \'a0 \'a0 return notify("\uc0\u27492 \u28436 \u31034 \u29256 \u26242 \u26410 \u23454 \u29616 \u27983 \u35272 \u21382 \u21490 ");\
+\'a0 \'a0 \}\
+\'a0 \}\
+\
+\'a0 function goLocation(win, location) \{\
+\'a0 \'a0 if (location === "trash") return openApp("trash");\
+\'a0 \'a0 if (location === "root") return showFolder(win, fs.id);\
+\'a0 \'a0 const nameMap = \{\
+\'a0 \'a0 \'a0 desktop: "\uc0\u26700 \u38754 ", documents: "\u25991 \u26723 ", downloads: "\u19979 \u36733 ", pictures: "\u22270 \u29255 "\
+\'a0 \'a0 \};\
+\'a0 \'a0 const target = fs.children.find(item => item.name === nameMap[location]);\
+\'a0 \'a0 if (target) showFolder(win, target.id);\
+\'a0 \}\
+\
+\'a0 function noteCommand(win, command) \{\
+\'a0 \'a0 const textarea = $(".notepad-text", win);\
+\'a0 \'a0 if (command === "new") \{\
+\'a0 \'a0 \'a0 win.dataset.fileId = "";\
+\'a0 \'a0 \'a0 textarea.value = "";\
+\'a0 \'a0 \'a0 $("[data-note-name]", win).textContent = "\uc0\u26410 \u21629 \u21517 .txt";\
+\'a0 \'a0 \'a0 textarea.focus();\
+\'a0 \'a0 \'a0 return;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 if (command === "save") \{\
+\'a0 \'a0 \'a0 const fileId = win.dataset.fileId;\
+\'a0 \'a0 \'a0 let node = fileId && findNode(fileId);\
+\'a0 \'a0 \'a0 if (!node) \{\
+\'a0 \'a0 \'a0 \'a0 const name = prompt("\uc0\u20445 \u23384 \u20026 \u25991 \u20214 \u21517 \u65306 ", "\u26032 \u24314 \u25991 \u26412 \u25991 \u26723 .txt");\
+\'a0 \'a0 \'a0 \'a0 if (name === null || !name.trim()) return;\
+\'a0 \'a0 \'a0 \'a0 const parent = desktopFolder();\
+\'a0 \'a0 \'a0 \'a0 node = file(name.trim(), textarea.value);\
+\'a0 \'a0 \'a0 \'a0 parent.children.push(node);\
+\'a0 \'a0 \'a0 \'a0 win.dataset.fileId = node.id;\
+\'a0 \'a0 \'a0 \'a0 $("[data-note-name]", win).textContent = node.name;\
+\'a0 \'a0 \'a0 \} else \{\
+\'a0 \'a0 \'a0 \'a0 node.content = textarea.value;\
+\'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 saveFS();\
+\'a0 \'a0 \'a0 refreshAll();\
+\'a0 \'a0 \'a0 notify("\uc0\u25991 \u20214 \u24050 \u20445 \u23384 ");\
+\'a0 \'a0 \}\
+\'a0 \}\
+\
+\'a0 function loadTextFile(win, fileId) \{\
+\'a0 \'a0 const node = findNode(fileId);\
+\'a0 \'a0 if (!node || node.type !== "file") return;\
+\'a0 \'a0 win.dataset.fileId = node.id;\
+\'a0 \'a0 $(".notepad-text", win).value = node.content || "";\
+\'a0 \'a0 $("[data-note-name]", win).textContent = node.name;\
+\'a0 \}\
+\
+\'a0 function calculatorKey(win, key) \{\
+\'a0 \'a0 const display = $(".calc-display", win);\
+\'a0 \'a0 let value = display.value;\
+\'a0 \'a0 const map = \{ "\'f7": "/", "\'d7": "*", "\uc0\u8722 ": "-" \};\
+\
+\'a0 \'a0 if (key === "C") return display.value = "0";\
+\'a0 \'a0 if (key === "\uc0\u9003 ") return display.value = value.length > 1 ? value.slice(0, -1) : "0";\
+\'a0 \'a0 if (key === "\'b1") return display.value = String(Number(value) * -1);\
+\
+\'a0 \'a0 if (key === "=") \{\
+\'a0 \'a0 \'a0 try \{\
+\'a0 \'a0 \'a0 \'a0 const expression = value.replace(/[\'f7\'d7\uc0\u8722 ]/g, ch => map[ch]);\
+\'a0 \'a0 \'a0 \'a0 if (!/^[0-9+*/().% -]+$/.test(expression)) throw new Error();\
+\'a0 \'a0 \'a0 \'a0 const result = Function('"use strict";return (' + expression + ')')();\
+\'a0 \'a0 \'a0 \'a0 display.value = Number.isFinite(result) ? String(Number(result.toFixed(10))) : "\uc0\u38169 \u35823 ";\
+\'a0 \'a0 \'a0 \} catch \{\
+\'a0 \'a0 \'a0 \'a0 display.value = "\uc0\u38169 \u35823 ";\
+\'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 return;\
+\'a0 \'a0 \}\
+\
+\'a0 \'a0 const mapped = map[key] || key;\
+\'a0 \'a0 display.value = value === "0" || value === "\uc0\u38169 \u35823 "\
+\'a0 \'a0 \'a0 ? (/^[0-9.]$/.test(mapped) ? mapped : value + mapped)\
+\'a0 \'a0 \'a0 : value + mapped;\
+\'a0 \}\
+\
+\'a0 function showContextMenu(x, y, state) \{\
+\'a0 \'a0 contextState = state;\
+\'a0 \'a0 const menu = $("#contextMenu");\
+\'a0 \'a0 const isDesktop = state.place === "desktop";\
+\'a0 \'a0 const node = state.nodeId ? findNode(state.nodeId) : null;\
+\
+\'a0 \'a0 let html = "";\
+\'a0 \'a0 if (node) \{\
+\'a0 \'a0 \'a0 html += `<button data-action="open">\uc0\u55357 \u56514 \u12288 \u25171 \u24320 </button>\
+\'a0 \'a0 \'a0 \'a0 <button data-action="rename">\uc0\u9999 \u65039 \u12288 \u37325 \u21629 \u21517 </button>\
+\'a0 \'a0 \'a0 \'a0 <button data-action="copy">\uc0\u55357 \u56516 \u12288 \u22797 \u21046 </button>\
+\'a0 \'a0 \'a0 \'a0 <button data-action="cut">\uc0\u9986 \u65039 \u12288 \u21098 \u20999 </button>\
+\'a0 \'a0 \'a0 \'a0 <button data-action="delete">\uc0\u55357 \u56785 \u65039 \u12288 \u21024 \u38500 </button><div class="separator"></div>`;\
+\'a0 \'a0 \}\
+\'a0 \'a0 html += `<button data-action="new-folder">\uc0\u55357 \u56513 \u12288 \u26032 \u24314 \u25991 \u20214 \u22841 </button>\
+\'a0 \'a0 \'a0 <button data-action="new-file">\uc0\u55357 \u56516 \u12288 \u26032 \u24314 \u25991 \u26412 \u25991 \u26723 </button>\
+\'a0 \'a0 \'a0 <button data-action="paste">\uc0\u55357 \u56523 \u12288 \u31896 \u36148 </button>\
+\'a0 \'a0 \'a0 <div class="separator"></div>\
+\'a0 \'a0 \'a0 <button data-action="refresh">\uc0\u55357 \u56580 \u12288 \u21047 \u26032 </button>\
+\'a0 \'a0 \'a0 <button data-action="settings">\uc0\u55356 \u57256 \u12288 \u20010 \u24615 \u21270 </button>`;\
+\
+\'a0 \'a0 menu.innerHTML = html;\
+\'a0 \'a0 menu.style.left = Math.min(x, innerWidth - 220) + "px";\
+\'a0 \'a0 menu.style.top = Math.min(y, innerHeight - 250) + "px";\
+\'a0 \'a0 menu.classList.add("show");\
+\'a0 \'a0 menu.dataset.desktop = String(isDesktop);\
+\'a0 \}\
+\
+\'a0 $("#contextMenu").addEventListener("click", event => \{\
+\'a0 \'a0 const button = event.target.closest("[data-action]");\
+\'a0 \'a0 if (!button || !contextState) return;\
+\'a0 \'a0 const action = button.dataset.action;\
+\'a0 \'a0 const state = contextState;\
+\'a0 \'a0 $("#contextMenu").classList.remove("show");\
+\
+\'a0 \'a0 const destination = state.place === "desktop" ? desktopFolder().id : state.folderId;\
+\'a0 \'a0 if (action === "open" && state.nodeId) return openNode(state.nodeId);\
+\'a0 \'a0 if (action === "rename" && state.nodeId) return renameItem(state.nodeId);\
+\'a0 \'a0 if (action === "delete" && state.nodeId) return deleteItem(state.nodeId);\
+\'a0 \'a0 if (action === "copy" && state.nodeId) return copyOrCut(state.nodeId, "copy");\
+\'a0 \'a0 if (action === "cut" && state.nodeId) return copyOrCut(state.nodeId, "cut");\
+\'a0 \'a0 if (action === "new-folder") return createItem(destination, "folder");\
+\'a0 \'a0 if (action === "new-file") return createItem(destination, "file");\
+\'a0 \'a0 if (action === "paste") return pasteInto(destination);\
+\'a0 \'a0 if (action === "refresh") return refreshAll();\
+\'a0 \'a0 if (action === "settings") return openApp("settings");\
+\'a0 \});\
+\
+\'a0 $("#desktop").addEventListener("contextmenu", event => \{\
+\'a0 \'a0 event.preventDefault();\
+\'a0 \'a0 const item = event.target.closest("[data-node]");\
+\'a0 \'a0 showContextMenu(event.clientX, event.clientY, \{\
+\'a0 \'a0 \'a0 place: "desktop",\
+\'a0 \'a0 \'a0 nodeId: item?.dataset.node || null,\
+\'a0 \'a0 \'a0 folderId: desktopFolder().id\
+\'a0 \'a0 \});\
+\'a0 \});\
+\
+\'a0 $("#desktop").addEventListener("click", event => \{\
+\'a0 \'a0 const icon = event.target.closest(".desktop-icon");\
+\'a0 \'a0 $$(".desktop-icon").forEach(item => item.classList.toggle("selected", item === icon));\
+\'a0 \'a0 if (event.detail === 2 && icon) \{\
+\'a0 \'a0 \'a0 if (icon.dataset.app) openApp(icon.dataset.app);\
+\'a0 \'a0 \'a0 else if (icon.dataset.node) openNode(icon.dataset.node);\
+\'a0 \'a0 \}\
+\'a0 \});\
+\
+\'a0 $("#startButton").addEventListener("click", () => \{\
+\'a0 \'a0 closePanels();\
+\'a0 \'a0 $("#startMenu").classList.toggle("show");\
+\'a0 \});\
+\
+\'a0 $("#quickButton").addEventListener("click", () => \{\
+\'a0 \'a0 closePanels();\
+\'a0 \'a0 $("#quickPanel").classList.toggle("show");\
+\'a0 \});\
+\
+\'a0 $("#clockButton").addEventListener("click", () => \{\
+\'a0 \'a0 closePanels();\
+\'a0 \'a0 $("#notifications").classList.toggle("show");\
+\'a0 \});\
+\
+\'a0 $("#appGrid").addEventListener("click", event => \{\
+\'a0 \'a0 const button = event.target.closest("[data-app]");\
+\'a0 \'a0 if (button) openApp(button.dataset.app);\
+\'a0 \});\
+\
+\'a0 $$("[data-launch]").forEach(button => button.addEventListener("click", () => \{\
+\'a0 \'a0 const appName = button.dataset.launch;\
+\'a0 \'a0 const win = windows.get(appName);\
+\'a0 \'a0 if (win && !win.classList.contains("minimized")) \{\
+\'a0 \'a0 \'a0 win.classList.add("minimized");\
+\'a0 \'a0 \'a0 updateTaskbar();\
+\'a0 \'a0 \} else \{\
+\'a0 \'a0 \'a0 openApp(appName);\
+\'a0 \'a0 \}\
+\'a0 \}));\
+\
+\'a0 $("#startSearch").addEventListener("input", event => \{\
+\'a0 \'a0 const query = event.target.value.toLowerCase().trim();\
+\'a0 \'a0 $$(".app-item").forEach(item => \{\
+\'a0 \'a0 \'a0 item.style.display = item.dataset.name.toLowerCase().includes(query) ? "" : "none";\
+\'a0 \'a0 \});\
+\'a0 \});\
+\
+\'a0 $("#taskSearch").addEventListener("click", () => \{\
+\'a0 \'a0 closePanels();\
+\'a0 \'a0 $("#startMenu").classList.add("show");\
+\'a0 \'a0 $("#startSearch").focus();\
+\'a0 \});\
+\
+\'a0 $("#allApps").addEventListener("click", () => \{\
+\'a0 \'a0 $("#startSearch").value = "";\
+\'a0 \'a0 $$(".app-item").forEach(item => item.style.display = "");\
+\'a0 \'a0 $("#startSearch").focus();\
+\'a0 \});\
+\
+\'a0 $("#quickPanel").addEventListener("click", event => \{\
+\'a0 \'a0 const tile = event.target.closest(".quick-tile");\
+\'a0 \'a0 if (tile) tile.classList.toggle("on");\
+\'a0 \});\
+\
+\'a0 $("#clearNotifications").addEventListener("click", () => \{\
+\'a0 \'a0 $("#notificationCard").textContent = "\uc0\u27809 \u26377 \u26032 \u30340 \u36890 \u30693 \u12290 ";\
+\'a0 \});\
+\
+\'a0 $("#powerButton").addEventListener("click", () => notify("\uc0\u32593 \u39029 \u29256 \u27169 \u25311 \u22120 \u19981 \u33021 \u20851 \u38381 \u25110 \u37325 \u21551 \u30005 \u33041 "));\
+\
+\'a0 document.addEventListener("pointerdown", event => \{\
+\'a0 \'a0 if (!event.target.closest(".panel") &&\
+\'a0 \'a0 \'a0 \'a0 !event.target.closest("#startButton") &&\
+\'a0 \'a0 \'a0 \'a0 !event.target.closest(".tray") &&\
+\'a0 \'a0 \'a0 \'a0 !event.target.closest("#taskSearch")) \{\
+\'a0 \'a0 \'a0 $$(".panel").forEach(panel => panel.classList.remove("show"));\
+\'a0 \'a0 \}\
+\'a0 \'a0 if (!event.target.closest(".context-menu")) $("#contextMenu").classList.remove("show");\
+\'a0 \});\
+\
+\'a0 document.addEventListener("keydown", event => \{\
+\'a0 \'a0 if (event.key === "Escape") closePanels();\
+\'a0 \'a0 if (event.key === "Delete") \{\
+\'a0 \'a0 \'a0 const focused = $(".window.focused");\
+\'a0 \'a0 \'a0 const selected = focused?.dataset.selectedFile;\
+\'a0 \'a0 \'a0 if (selected) deleteItem(selected);\
+\'a0 \'a0 \}\
+\'a0 \'a0 if (event.key === "Enter" && event.target === $("#startSearch")) \{\
+\'a0 \'a0 \'a0 const first = $$(".app-item").find(item => item.style.display !== "none");\
+\'a0 \'a0 \'a0 if (first) openApp(first.dataset.app);\
+\'a0 \'a0 \}\
+\'a0 \});\
+\
+\'a0 function setWallpaper(name) \{\
+\'a0 \'a0 document.body.classList.remove("wall-purple", "wall-green");\
+\'a0 \'a0 if (name === "purple") document.body.classList.add("wall-purple");\
+\'a0 \'a0 if (name === "green") document.body.classList.add("wall-green");\
+\'a0 \'a0 localStorage.setItem("web-windows-wallpaper", name);\
+\'a0 \'a0 notify("\uc0\u26700 \u38754 \u32972 \u26223 \u24050 \u26356 \u25913 ");\
+\'a0 \}\
+\
+\'a0 function updateClock() \{\
+\'a0 \'a0 const now = new Date();\
+\'a0 \'a0 $("#clockTime").textContent = now.toLocaleTimeString("zh-CN", \{\
+\'a0 \'a0 \'a0 hour: "2-digit", minute: "2-digit"\
+\'a0 \'a0 \});\
+\'a0 \'a0 $("#clockDate").textContent = now.toLocaleDateString("zh-CN", \{\
+\'a0 \'a0 \'a0 year: "numeric", month: "2-digit", day: "2-digit"\
+\'a0 \'a0 \});\
+\'a0 \}\
+\
+\'a0 if (localStorage.getItem("web-windows-dark") === "true") \{\
+\'a0 \'a0 document.body.classList.add("dark");\
+\'a0 \}\
+\'a0 const savedWallpaper = localStorage.getItem("web-windows-wallpaper");\
+\'a0 if (savedWallpaper) setWallpaper(savedWallpaper);\
+\
+\'a0 renderDesktop();\
+\'a0 updateClock();\
+\'a0 setInterval(updateClock, 1000);\
+\})();\
+</script>\
+</body>\
+</html>}
