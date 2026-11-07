@@ -56,7 +56,7 @@
             linear-gradient(135deg, #145d63, #143749 55%, #071d2b);
     }
 
-    button, input, textarea { font: inherit; }
+    button, input, textarea, select { font: inherit; }
     button { color: inherit; }
 
     .desktop {
@@ -340,6 +340,10 @@
         height: auto !important;
         transform: none !important;
     }
+    .window.focused {
+        border-color: rgba(82,125,243,.55);
+        box-shadow: 0 22px 70px rgba(0,0,0,.34);
+    }
 
     .titlebar {
         height: 38px;
@@ -483,6 +487,170 @@
     .calc-key:hover { background: rgba(128,140,165,.23); }
     .calc-key.equals { color: white; background: var(--accent); }
 
+    /* ---------- 浏览器 ---------- */
+    .browser-wrap { height: 100%; display: flex; flex-direction: column; }
+    .browser-bookmarks {
+        display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+        padding: 6px 10px;
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+    }
+    .bookmark-chip {
+        padding: 4px 10px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(128,140,165,.1);
+        cursor: pointer;
+        font-size: 11px;
+    }
+    .bookmark-chip:hover { background: rgba(82,125,243,.16); }
+    .browser-frame {
+        flex: 1;
+        width: 100%;
+        border: 0;
+        background: #fff;
+    }
+    .browser-tip {
+        padding: 4px 10px;
+        color: var(--muted);
+        font-size: 11px;
+        border-top: 1px solid var(--line);
+    }
+
+    /* ---------- 终端 ---------- */
+    .terminal {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: #0c0c14;
+        color: #d6e2ff;
+        font: 13px/1.6 Consolas, "Courier New", monospace;
+    }
+    .term-output {
+        flex: 1;
+        overflow: auto;
+        padding: 12px 14px;
+        white-space: pre-wrap;
+        word-break: break-all;
+        user-select: text;
+    }
+    .term-row { display: flex; gap: 8px; padding: 0 14px 12px; }
+    .term-prompt { color: #7ecbff; white-space: nowrap; }
+    .term-input {
+        flex: 1;
+        border: 0; outline: 0;
+        background: transparent;
+        color: #d6e2ff;
+        font: inherit;
+    }
+
+    /* ---------- 画图 ---------- */
+    .paint-wrap { height: 100%; display: flex; flex-direction: column; }
+    .paint-canvas-area {
+        flex: 1;
+        overflow: auto;
+        display: grid;
+        place-items: center;
+        background:
+            repeating-conic-gradient(rgba(128,140,165,.08) 0% 25%, transparent 0% 50%) 0 0 / 20px 20px;
+    }
+    .paint-canvas {
+        background: #fff;
+        border: 1px solid var(--line);
+        cursor: crosshair;
+        touch-action: none;
+        max-width: 100%;
+    }
+    .paint-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .paint-controls label { font-size: 12px; display: flex; align-items: center; gap: 5px; }
+    .paint-controls input[type="color"] {
+        width: 32px; height: 26px; padding: 0; border: 1px solid var(--line); border-radius: 4px; background: transparent;
+    }
+
+    /* ---------- 扫雷 ---------- */
+    .mine-wrap { padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .mine-status { font-size: 13px; display: flex; gap: 16px; align-items: center; }
+    .mine-grid {
+        display: grid;
+        grid-template-columns: repeat(9, 30px);
+        gap: 2px;
+    }
+    .mine-cell {
+        width: 30px; height: 30px;
+        display: grid; place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: rgba(128,140,165,.14);
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        user-select: none;
+    }
+    .mine-cell:hover { background: rgba(82,125,243,.18); }
+    .mine-cell.open { background: rgba(128,140,165,.05); cursor: default; }
+    .mine-cell.boom { background: #e8564d; color: #fff; }
+    .mine-n1 { color: #2f6fd0; } .mine-n2 { color: #2e8b47; } .mine-n3 { color: #d0483e; }
+    .mine-n4 { color: #6a3bbd; } .mine-n5 { color: #a8642a; } .mine-n6 { color: #1d8f8f; }
+    .mine-n7 { color: #444; } .mine-n8 { color: #888; }
+
+    /* ---------- 任务管理器 ---------- */
+    .taskmgr { padding: 14px; }
+    .taskmgr table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .taskmgr th, .taskmgr td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); }
+    .taskmgr tr[data-task-app] { cursor: pointer; }
+    .taskmgr tr.selected { background: rgba(82,125,243,.12); }
+    .taskmgr-actions { margin-top: 12px; display: flex; gap: 8px; }
+
+    /* ---------- 日历 ---------- */
+    .calendar { max-width: 420px; margin: 18px auto; padding: 10px; }
+    .cal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 15px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; text-align: center; font-size: 12px; }
+    .cal-grid .cal-wd { color: var(--muted); padding: 5px 0; font-weight: 600; }
+    .cal-day {
+        padding: 9px 0;
+        border-radius: 6px;
+        cursor: default;
+    }
+    .cal-day.today { color: #fff; background: var(--accent); font-weight: 600; }
+    .cal-day.dim { color: var(--muted); opacity: .55; }
+
+    /* ---------- 媒体播放器 ---------- */
+    .media { max-width: 460px; margin: 16px auto; padding: 12px; }
+    .media-now {
+        padding: 26px 16px;
+        border-radius: 10px;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(82,125,243,.25), rgba(130,90,240,.2));
+        margin-bottom: 12px;
+    }
+    .media-now .disc { font-size: 44px; display: inline-block; }
+    .media-now.playing .disc { animation: spin 3.5s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .media-track {
+        width: 100%;
+        padding: 10px 12px;
+        display: flex;
+        justify-content: space-between;
+        border: 0;
+        border-radius: 6px;
+        background: rgba(128,140,165,.1);
+        cursor: pointer;
+        font-size: 13px;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+    .media-track:hover { background: rgba(82,125,243,.16); }
+
+    /* ---------- 照片查看器 ---------- */
+    .photo-view { height: 100%; display: grid; place-items: center; padding: 16px; }
+    .photo-view img {
+        max-width: 100%;
+        max-height: 100%;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        box-shadow: var(--shadow);
+    }
+
     .context-menu {
         width: 210px;
         padding: 5px;
@@ -529,6 +697,8 @@
         .taskbar-center { transform: translateX(-18px); }
         .app-grid { grid-template-columns: repeat(4,1fr); }
         .sidebar { width: 120px; flex-basis: 120px; }
+        .mine-grid { grid-template-columns: repeat(9, 24px); }
+        .mine-cell { width: 24px; height: 24px; font-size: 12px; }
     }
     @media (max-width: 390px) {
         .app-grid { grid-template-columns: repeat(3,1fr); }
@@ -548,11 +718,32 @@
             <button class="app-item" data-app="explorer" data-name="文件资源管理器">
                 <span class="icon">📂</span><span>文件资源管理器</span>
             </button>
+            <button class="app-item" data-app="browser" data-name="浏览器 网络 Edge">
+                <span class="icon">🌐</span><span>浏览器</span>
+            </button>
             <button class="app-item" data-app="notepad" data-name="记事本 文本">
                 <span class="icon">📄</span><span>记事本</span>
             </button>
             <button class="app-item" data-app="calculator" data-name="计算器">
                 <span class="icon">🧮</span><span>计算器</span>
+            </button>
+            <button class="app-item" data-app="paint" data-name="画图 绘画 绘图">
+                <span class="icon">🎨</span><span>画图</span>
+            </button>
+            <button class="app-item" data-app="terminal" data-name="终端 命令行 cmd">
+                <span class="icon">⌨️</span><span>终端</span>
+            </button>
+            <button class="app-item" data-app="minesweeper" data-name="扫雷 游戏">
+                <span class="icon">💣</span><span>扫雷</span>
+            </button>
+            <button class="app-item" data-app="calendar" data-name="日历 日期">
+                <span class="icon">📅</span><span>日历</span>
+            </button>
+            <button class="app-item" data-app="media" data-name="音乐 媒体播放器">
+                <span class="icon">🎵</span><span>音乐</span>
+            </button>
+            <button class="app-item" data-app="taskmgr" data-name="任务管理器 进程">
+                <span class="icon">📊</span><span>任务管理器</span>
             </button>
             <button class="app-item" data-app="settings" data-name="设置 个性化">
                 <span class="icon">⚙️</span><span>设置</span>
@@ -584,8 +775,8 @@
 
     <section class="panel notifications" id="notifications">
         <div class="heading" style="margin-top:0"><span>通知</span><button id="clearNotifications">清除全部</button></div>
-        <div class="notification" id="notificationCard"><b>ℹ️ 欢迎使用 Windows</b><br>文件保存在浏览器本地存储中。</div>
-        <div class="notification">记事本可以新建、保存、编辑各类文档文件。</div>
+        <div class="notification" id="notificationCard"><b>ℹ️ 欢迎使用 Windows</b><br>文件保存在浏览器本地存储中。新增浏览器、画图、终端、扫雷等应用。</div>
+        <div class="notification">用画图画的图片会保存到桌面，双击即可查看。</div>
     </section>
 
     <div class="context-menu" id="contextMenu"></div>
@@ -598,8 +789,10 @@
             </button>
             <label class="task-search" id="taskSearch">🔍 <input id="taskSearchInput" placeholder="搜索"></label>
             <button class="task-button" data-launch="explorer" title="文件资源管理器">📂</button>
+            <button class="task-button" data-launch="browser" title="浏览器">🌐</button>
             <button class="task-button" data-launch="notepad" title="记事本">📄</button>
             <button class="task-button" data-launch="calculator" title="计算器">🧮</button>
+            <button class="task-button" data-launch="minesweeper" title="扫雷">💣</button>
         </div>
         <div class="tray">
             <button id="quickButton" title="快速设置">⚙ 📶 🔊 🔔</button>
@@ -620,10 +813,18 @@
 
     const apps = {
         explorer: { title: "文件资源管理器", icon: "📂" },
+        browser: { title: "浏览器", icon: "🌐" },
         notepad: { title: "记事本", icon: "📄" },
         calculator: { title: "计算器", icon: "🧮" },
+        paint: { title: "画图", icon: "🎨" },
+        terminal: { title: "终端", icon: "⌨️" },
+        minesweeper: { title: "扫雷", icon: "💣" },
+        calendar: { title: "日历", icon: "📅" },
+        media: { title: "音乐播放器", icon: "🎵" },
+        taskmgr: { title: "任务管理器", icon: "📊" },
         settings: { title: "设置", icon: "⚙️" },
         trash: { title: "回收站", icon: "🗑️" },
+        photos: { title: "照片查看器", icon: "🖼️" },
         about: { title: "关于 Windows Web", icon: "ℹ️" }
     };
 
@@ -643,7 +844,7 @@
         return folder("此电脑", [
             folder("桌面", [
                 folder("新建文件夹"),
-                file("欢迎使用.txt", "欢迎使用 Windows Web 桌面！\n\n你可以在桌面新建文件和文件夹。")
+                file("欢迎使用.txt", "欢迎使用 Windows Web 桌面！\n\n你可以在桌面新建文件和文件夹。\n试试浏览器、画图、终端和扫雷吧。")
             ]),
             folder("文档"),
             folder("下载"),
@@ -714,6 +915,7 @@
     function iconFor(node) {
         if (node.type === "folder") return "📁";
         if (/\.txt$/i.test(node.name)) return "📄";
+        if (/\.(png|jpe?g|gif|webp|bmp)$/i.test(node.name)) return "🖼️";
         return "📃";
     }
 
@@ -735,8 +937,12 @@
         const items = desktopFolder().children;
         desktop.innerHTML = `
             <div class="desktop-icon" data-app="explorer"><span class="icon">📂</span>此电脑</div>
+            <div class="desktop-icon" data-app="browser"><span class="icon">🌐</span>浏览器</div>
             <div class="desktop-icon" data-app="notepad"><span class="icon">📄</span>记事本</div>
             <div class="desktop-icon" data-app="calculator"><span class="icon">🧮</span>计算器</div>
+            <div class="desktop-icon" data-app="paint"><span class="icon">🎨</span>画图</div>
+            <div class="desktop-icon" data-app="terminal"><span class="icon">⌨️</span>终端</div>
+            <div class="desktop-icon" data-app="minesweeper"><span class="icon">💣</span>扫雷</div>
             <div class="desktop-icon" data-app="trash"><span class="icon">${trash.length ? "🗑️" : "🗳️"}</span>回收站</div>
             ${items.map(item => `
                 <div class="desktop-icon" data-node="${escapeHTML(item.id)}">
@@ -764,10 +970,51 @@
                     <div class="nav-item" data-location="downloads">📥 下载</div>
                     <div class="nav-item" data-location="pictures">🖼️ 图片</div>
                     <div class="nav-item" data-location="trash">🗑️ 回收站</div>
-                    <div class="nav-item" data-location="root">📂 此电脑</div>
                 </aside>
                 <div class="files-area" data-files-area></div>
             </div>`;
+    }
+
+    function getBrowserHome() {
+        return `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+            body{font-family:"Segoe UI","Microsoft YaHei",sans-serif;margin:0;min-height:100vh;display:grid;place-items:center;
+            background:linear-gradient(135deg,#1b3a75,#241b58 55%,#0a1226);color:#fff}
+            .card{text-align:center;padding:34px 42px;border-radius:16px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px)}
+            h1{margin:0 0 6px;font-size:26px} p{margin:0 0 20px;color:#b9c6e4;font-size:13px}
+            a{display:inline-block;margin:5px;padding:9px 16px;border-radius:8px;background:rgba(255,255,255,.14);
+            color:#fff;text-decoration:none;font-size:13px}
+            a:hover{background:rgba(255,255,255,.26)}
+        </style></head><body><div class="card">
+            <h1>🌐 Web 浏览器</h1>
+            <p>在上方地址栏输入网址，或点击下面的快捷链接</p>
+            <a href="https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5">📖 维基百科</a>
+            <a href="https://www.openstreetmap.org/export/embed.html?bbox=116.2,39.8,116.6,40.05&amp;layer=mapnik">🗺️ OpenStreetMap</a>
+            <a href="https://example.com">🧪 Example.com</a>
+            <a href="https://wttr.in">⛅ 天气 wttr.in</a>
+        </div></body></html>`;
+    }
+
+    function getBrowserContent() {
+        return `<div class="browser-wrap">
+            <div class="toolbar">
+                <button class="tool" data-browser="back" title="后退">←</button>
+                <button class="tool" data-browser="forward" title="前进">→</button>
+                <button class="tool" data-browser="reload" title="刷新">⟳</button>
+                <button class="tool" data-browser="home" title="主页">🏠</button>
+                <input class="address" data-url placeholder="输入网址，例如 example.com" spellcheck="false">
+                <button class="tool" data-browser="go" title="前往">前往</button>
+                <button class="tool" data-browser="newtab" title="在系统浏览器打开">↗</button>
+            </div>
+            <div class="browser-bookmarks">
+                <span style="color:var(--muted)">书签：</span>
+                <button class="bookmark-chip" data-browse-url="https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5">📖 维基百科</button>
+                <button class="bookmark-chip" data-browse-url="https://www.openstreetmap.org/export/embed.html?bbox=116.2,39.8,116.6,40.05&layer=mapnik">🗺️ 地图</button>
+                <button class="bookmark-chip" data-browse-url="https://example.com">🧪 Example</button>
+                <button class="bookmark-chip" data-browse-url="https://wttr.in">⛅ 天气</button>
+            </div>
+            <iframe class="browser-frame" data-frame title="浏览器页面" referrerpolicy="no-referrer"></iframe>
+            <div class="browser-tip">提示：部分网站（如百度、谷歌）禁止被内嵌显示，若页面空白请点击 ↗ 在系统浏览器中打开。</div>
+        </div>`;
     }
 
     function openApp(appName, options = {}) {
@@ -806,6 +1053,12 @@
         if (appName === "notepad" && options.fileId) {
             loadTextFile(win, options.fileId);
         }
+        if (appName === "photos" && options.fileId) {
+            loadPhoto(win, options.fileId);
+        }
+        if (appName === "browser" && options.url) {
+            browserNavigate(win, options.url);
+        }
 
         focusWindow(win);
         updateTaskbar();
@@ -813,6 +1066,7 @@
 
     function contentFor(appName) {
         if (appName === "explorer") return getExplorerContent();
+        if (appName === "browser") return getBrowserContent();
 
         if (appName === "notepad") {
             return `<div class="notepad-wrap">
@@ -835,6 +1089,88 @@
             </div>`;
         }
 
+        if (appName === "paint") {
+            return `<div class="paint-wrap">
+                <div class="toolbar paint-controls">
+                    <button class="tool" data-paint="save">💾 保存到桌面</button>
+                    <button class="tool" data-paint="clear">🗑 清空</button>
+                    <label>🖌 颜色 <input type="color" data-paint-color value="#1a73e8"></label>
+                    <label>粗细 <input type="range" data-paint-size min="1" max="40" value="5" style="width:110px"></label>
+                    <label><input type="checkbox" data-paint-eraser> 橡皮擦</label>
+                </div>
+                <div class="paint-canvas-area">
+                    <canvas class="paint-canvas" data-paint-canvas width="640" height="420"></canvas>
+                </div>
+            </div>`;
+        }
+
+        if (appName === "terminal") {
+            return `<div class="terminal">
+                <div class="term-output" data-term-out>Welcome to Windows Web Terminal [版本 2.0]
+输入 help 查看可用命令。
+</div>
+                <div class="term-row"><span class="term-prompt">C:\\Users\\用户&gt;</span>
+                <input class="term-input" data-term-in autocomplete="off" spellcheck="false"></div>
+            </div>`;
+        }
+
+        if (appName === "minesweeper") {
+            return `<div class="mine-wrap">
+                <div class="mine-status">
+                    <span data-mine-mines>💣 10</span>
+                    <button class="tool" data-mine="restart" style="border:1px solid var(--line);border-radius:4px">🙂 重新开始</button>
+                    <span data-mine-time>⏱ 0s</span>
+                </div>
+                <div class="mine-grid" data-mine-grid></div>
+                <p class="empty">左键翻开 · 右键插旗 · 找出全部 10 颗雷</p>
+            </div>`;
+        }
+
+        if (appName === "taskmgr") {
+            return `<div class="taskmgr">
+                <table>
+                    <thead><tr><th>应用</th><th>CPU</th><th>内存</th><th>状态</th></tr></thead>
+                    <tbody data-task-body></tbody>
+                </table>
+                <div class="taskmgr-actions">
+                    <button class="small-button" data-task="end">✖ 结束任务</button>
+                    <button class="small-button" data-task="refresh">⟳ 刷新</button>
+                </div>
+                <p class="empty" style="margin-top:10px">选中一行后可结束对应应用（任务管理器自身除外）。</p>
+            </div>`;
+        }
+
+        if (appName === "calendar") {
+            return `<div class="calendar">
+                <div class="cal-head">
+                    <button class="tool" data-cal="prev" style="border:1px solid var(--line);border-radius:4px">←</button>
+                    <b data-cal-title></b>
+                    <button class="tool" data-cal="next" style="border:1px solid var(--line);border-radius:4px">→</button>
+                </div>
+                <div class="cal-grid" data-cal-grid></div>
+            </div>`;
+        }
+
+        if (appName === "media") {
+            const tracks = [
+                { name: "小星星", notes: [[262,.4],[262,.4],[392,.4],[392,.4],[440,.4],[440,.4],[392,.8],[349,.4],[349,.4],[330,.4],[330,.4],[294,.4],[294,.4],[262,.8]] },
+                { name: "欢乐颂", notes: [[330,.4],[330,.4],[349,.4],[392,.4],[392,.4],[349,.4],[330,.4],[294,.4],[262,.4],[262,.4],[294,.4],[330,.4],[330,.6],[294,.2],[294,.8]] },
+                { name: "致爱丽丝", notes: [[330,.3],[311,.3],[330,.3],[311,.3],[330,.3],[494,.3],[247,.3],[262,.3],[220,.6]] }
+            ];
+            return `<div class="media">
+                <div class="media-now" data-media-now><span class="disc">💿</span>
+                    <div style="margin-top:8px;font-size:13px" data-media-title>未在播放</div></div>
+                ${tracks.map((t, i) => `<button class="media-track" data-media-play="${i}">
+                    <span>🎵 ${t.name}</span><span style="color:var(--muted)">内置旋律</span></button>`).join("")}
+                <button class="media-track" data-media-stop="1"><span>⏹ 停止</span></button>
+                <p class="empty">使用 Web Audio 合成播放，请确保未静音。</p>
+            </div>`;
+        }
+
+        if (appName === "photos") {
+            return `<div class="photo-view"><img data-photo-img alt="图片预览"></div>`;
+        }
+
         if (appName === "settings") {
             return `<div class="settings">
                 <h2>个性化</h2>
@@ -844,6 +1180,10 @@
                     <button data-wallpaper="blue">蓝色</button>
                     <button data-wallpaper="purple">紫色</button>
                     <button data-wallpaper="green">绿色</button></div>
+                <div class="setting-card"><b>系统</b><p>查看当前运行的应用或打开常用工具。</p>
+                    <button data-open-app="taskmgr">📊 任务管理器</button>
+                    <button data-open-app="terminal">⌨️ 终端</button>
+                    <button data-open-app="browser">🌐 浏览器</button></div>
                 <div class="setting-card"><b>存储说明</b><p>文件保存在浏览器本地的存储空间中。清除浏览器缓存会丢失全部文件。</p></div>
             </div>`;
         }
@@ -859,8 +1199,10 @@
         return `<div style="max-width:550px;margin:55px auto;padding:20px;text-align:center">
             <div style="font-size:56px">ℹ️</div><h2>Windows Web 桌面</h2>
             <p style="color:var(--muted);line-height:1.7">
-                使用 HTML、CSS 和 JavaScript 编写的桌面模拟器。你可以模拟 Windows 系统，并且可以创建各类文档文件。
-            </p><p style="color:var(--muted);font-size:12px">版本 2.0</p></div>`;
+                使用 HTML、CSS 和 JavaScript 编写的桌面模拟器。<br>
+                内置文件资源管理器、浏览器、记事本、画图、终端、扫雷、<br>
+                日历、音乐播放器、任务管理器等应用，可以创建和管理各类文件。
+            </p><p style="color:var(--muted);font-size:12px">版本 3.0</p></div>`;
     }
 
     function focusWindow(win) {
@@ -900,6 +1242,8 @@
             if (action) {
                 const type = action.dataset.window;
                 if (type === "close") {
+                    if (win._tmTimer) clearInterval(win._tmTimer);
+                    if (win._mediaStop) win._mediaStop();
                     windows.delete(win.dataset.app);
                     win.remove();
                     updateTaskbar();
@@ -911,6 +1255,9 @@
                 }
                 return;
             }
+
+            const openShortcut = event.target.closest("[data-open-app]");
+            if (openShortcut) return openApp(openShortcut.dataset.openApp);
 
             const cmd = event.target.closest("[data-command]");
             if (cmd) return runExplorerCommand(win, cmd.dataset.command);
@@ -932,6 +1279,51 @@
 
             const calcKey = event.target.closest("[data-calc]");
             if (calcKey) return calculatorKey(win, calcKey.dataset.calc);
+
+            const browserBtn = event.target.closest("[data-browser]");
+            if (browserBtn) return browserCommand(win, browserBtn.dataset.browser);
+
+            const bookmark = event.target.closest("[data-browse-url]");
+            if (bookmark) return browserNavigate(win, bookmark.dataset.browseUrl);
+
+            const paintBtn = event.target.closest("[data-paint]");
+            if (paintBtn) return paintCommand(win, paintBtn.dataset.paint);
+
+            const mineBtn = event.target.closest("[data-mine]");
+            if (mineBtn) return mineInit(win);
+
+            const mineCell = event.target.closest("[data-mine-cell]");
+            if (mineCell) return mineOpen(win, Number(mineCell.dataset.mineCell));
+
+            const taskBtn = event.target.closest("[data-task]");
+            if (taskBtn) {
+                if (taskBtn.dataset.task === "refresh") return taskmgrRender(win);
+                if (taskBtn.dataset.task === "end") return taskmgrEnd(win);
+                return;
+            }
+
+            const taskRow = event.target.closest("[data-task-app]");
+            if (taskRow) {
+                $$("[data-task-app]", win).forEach(row => row.classList.remove("selected"));
+                taskRow.classList.add("selected");
+                win.dataset.selectedTask = taskRow.dataset.taskApp;
+                return;
+            }
+
+            const calBtn = event.target.closest("[data-cal]");
+            if (calBtn) {
+                const delta = calBtn.dataset.cal === "next" ? 1 : -1;
+                win._calMonth = (win._calMonth ?? 0) + delta;
+                return calendarRender(win);
+            }
+
+            const mediaPlay = event.target.closest("[data-media-play]");
+            if (mediaPlay) return mediaPlayTrack(win, Number(mediaPlay.dataset.mediaPlay));
+
+            if (event.target.closest("[data-media-stop]")) {
+                if (win._mediaStop) win._mediaStop();
+                return;
+            }
 
             const setting = event.target.closest("[data-setting]");
             if (setting) {
@@ -964,6 +1356,11 @@
         });
 
         win.addEventListener("contextmenu", event => {
+            const mineCell = event.target.closest("[data-mine-cell]");
+            if (mineCell) {
+                event.preventDefault();
+                return mineFlag(win, Number(mineCell.dataset.mineCell));
+            }
             const item = event.target.closest("[data-file-id]");
             if (item) {
                 event.preventDefault();
@@ -981,6 +1378,24 @@
             renderExplorer(win);
         }
         if (win.dataset.app === "trash") renderTrash(win);
+        if (win.dataset.app === "browser") browserHome(win);
+        if (win.dataset.app === "terminal") setTimeout(() => $(".term-input", win)?.focus(), 50);
+        if (win.dataset.app === "paint") paintInit(win);
+        if (win.dataset.app === "minesweeper") mineInit(win);
+        if (win.dataset.app === "calendar") { win._calMonth = 0; calendarRender(win); }
+        if (win.dataset.app === "taskmgr") {
+            taskmgrRender(win);
+            win._tmTimer = setInterval(() => {
+                if (win.isConnected && !win.classList.contains("minimized")) taskmgrRender(win, true);
+            }, 2500);
+        }
+
+        const termInput = $(".term-input", win);
+        if (termInput) {
+            termInput.addEventListener("keydown", event => {
+                if (event.key === "Enter") terminalRun(win, termInput.value);
+            });
+        }
     }
 
     function toggleMaximize(win) {
@@ -1149,6 +1564,8 @@
         if (!node) return;
         if (node.type === "folder") {
             openApp("explorer", { folderId: node.id });
+        } else if (/\.(png|jpe?g|gif|webp|bmp)$/i.test(node.name)) {
+            openApp("photos", { fileId: node.id });
         } else {
             openApp("notepad", { fileId: node.id });
         }
@@ -1267,6 +1684,14 @@
         $("[data-note-name]", win).textContent = node.name;
     }
 
+    function loadPhoto(win, fileId) {
+        const node = findNode(fileId);
+        if (!node) return;
+        const img = $("[data-photo-img]", win);
+        if (img) img.src = node.content || "";
+        $(".window-title span:last-child", win).textContent = node.name;
+    }
+
     function calculatorKey(win, key) {
         const display = $(".calc-display", win);
         let value = display.value;
@@ -1293,6 +1718,491 @@
             ? (/^[0-9.]$/.test(mapped) ? mapped : value + mapped)
             : value + mapped;
     }
+
+    /* ================= 浏览器 ================= */
+
+    function normalizeUrl(raw) {
+        const value = String(raw || "").trim();
+        if (!value) return "";
+        if (/^(https?:\/\/|about:)/i.test(value)) return value;
+        if (/^[\w-]+(\.[\w-]+)+([/?#].*)?$/.test(value)) return "https://" + value;
+        return "https://www.bing.com/search?q=" + encodeURIComponent(value);
+    }
+
+    function browserHome(win) {
+        const frame = $("[data-frame]", win);
+        if (!frame) return;
+        win._bHist = ["about:home"];
+        win._bIdx = 0;
+        frame.removeAttribute("src");
+        frame.srcdoc = getBrowserHome();
+        const url = $("[data-url]", win);
+        if (url) url.value = "主页";
+    }
+
+    function browserLoad(win, url) {
+        const frame = $("[data-frame]", win);
+        if (!frame) return;
+        if (url === "about:home") {
+            browserHome(win);
+            return;
+        }
+        frame.removeAttribute("srcdoc");
+        frame.src = url;
+        const urlInput = $("[data-url]", win);
+        if (urlInput) urlInput.value = url;
+    }
+
+    function browserNavigate(win, raw) {
+        const url = normalizeUrl(raw);
+        if (!url) return notify("请输入网址");
+        win._bHist = (win._bHist || ["about:home"]).slice(0, win._bIdx + 1);
+        win._bHist.push(url);
+        win._bIdx = win._bHist.length - 1;
+        browserLoad(win, url);
+    }
+
+    function browserCommand(win, command) {
+        const urlInput = $("[data-url]", win);
+        if (!win._bHist) browserHome(win);
+
+        if (command === "go") return browserNavigate(win, urlInput.value);
+        if (command === "home") {
+            win._bHist.push("about:home");
+            win._bIdx = win._bHist.length - 1;
+            return browserHome(win);
+        }
+        if (command === "reload") {
+            const current = win._bHist[win._bIdx] || "about:home";
+            return browserLoad(win, current);
+        }
+        if (command === "back") {
+            if (win._bIdx > 0) {
+                win._bIdx--;
+                browserLoad(win, win._bHist[win._bIdx]);
+            }
+            return;
+        }
+        if (command === "forward") {
+            if (win._bIdx < win._bHist.length - 1) {
+                win._bIdx++;
+                browserLoad(win, win._bHist[win._bIdx]);
+            }
+            return;
+        }
+        if (command === "newtab") {
+            const current = win._bHist[win._bIdx];
+            if (current && current !== "about:home") {
+                window.open(current, "_blank", "noopener");
+                return notify("已在系统浏览器中打开");
+            }
+            return notify("当前是主页，请先打开一个网页");
+        }
+    }
+
+    /* ================= 画图 ================= */
+
+    function paintInit(win) {
+        const canvas = $("[data-paint-canvas]", win);
+        if (!canvas || canvas._ready) return;
+        canvas._ready = true;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+        let drawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        const pos = event => {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: (event.clientX - rect.left) * (canvas.width / rect.width),
+                y: (event.clientY - rect.top) * (canvas.height / rect.height)
+            };
+        };
+
+        canvas.addEventListener("pointerdown", event => {
+            drawing = true;
+            ({ x: lastX, y: lastY } = pos(event));
+            canvas.setPointerCapture(event.pointerId);
+        });
+        canvas.addEventListener("pointermove", event => {
+            if (!drawing) return;
+            const { x, y } = pos(event);
+            const color = $("[data-paint-color]", win).value;
+            const size = Number($("[data-paint-size]", win).value);
+            const eraser = $("[data-paint-eraser]", win).checked;
+            ctx.strokeStyle = eraser ? "#fff" : color;
+            ctx.lineWidth = eraser ? size * 3 : size;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            lastX = x;
+            lastY = y;
+        });
+        canvas.addEventListener("pointerup", () => drawing = false);
+        canvas.addEventListener("pointercancel", () => drawing = false);
+    }
+
+    function paintCommand(win, command) {
+        const canvas = $("[data-paint-canvas]", win);
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+
+        if (command === "clear") {
+            ctx.fillStyle = "#fff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            return notify("画布已清空");
+        }
+
+        if (command === "save") {
+            const name = prompt("保存图片名称：", "我的画作.png");
+            if (name === null || !name.trim()) return;
+            const fileName = /\.png$/i.test(name.trim()) ? name.trim() : name.trim() + ".png";
+            const parent = desktopFolder();
+            if (parent.children.some(item => item.name.toLowerCase() === fileName.toLowerCase())) {
+                return notify("桌面已有同名文件");
+            }
+            parent.children.push(file(fileName, canvas.toDataURL("image/png")));
+            saveFS();
+            refreshAll();
+            notify("画作已保存到桌面，双击可查看");
+        }
+    }
+
+    /* ================= 终端 ================= */
+
+    function terminalPrint(win, text) {
+        const out = $("[data-term-out]", win);
+        if (out) {
+            out.textContent += text + "\n";
+            out.scrollTop = out.scrollHeight;
+        }
+    }
+
+    function terminalRun(win, raw) {
+        const input = $(".term-input", win);
+        const line = raw.trim();
+        terminalPrint(win, "C:\\Users\\用户> " + line);
+        input.value = "";
+        if (!line) return;
+
+        const [cmd, ...args] = line.split(/\s+/);
+        const arg = args.join(" ");
+
+        switch (cmd.toLowerCase()) {
+            case "help":
+                terminalPrint(win, [
+                    "可用命令：",
+                    "  help          显示本帮助",
+                    "  ver           显示系统版本",
+                    "  date / time   显示日期 / 时间",
+                    "  dir           列出此电脑根目录内容",
+                    "  echo <文本>   输出文本",
+                    "  open <应用>   打开应用（explorer/browser/notepad/calculator/paint/",
+                    "                minesweeper/calendar/media/taskmgr/settings/trash/about）",
+                    "  tree          显示目录树",
+                    "  whoami        显示当前用户",
+                    "  cls           清屏",
+                    "  shutdown      关机（开玩笑）"
+                ].join("\n"));
+                break;
+            case "ver":
+                terminalPrint(win, "Windows Web [版本 3.0.2607]");
+                break;
+            case "date":
+                terminalPrint(win, new Date().toLocaleDateString("zh-CN"));
+                break;
+            case "time":
+                terminalPrint(win, new Date().toLocaleTimeString("zh-CN"));
+                break;
+            case "whoami":
+                terminalPrint(win, "windows-web\\用户");
+                break;
+            case "echo":
+                terminalPrint(win, arg || "");
+                break;
+            case "dir": {
+                const target = arg && fs.children.find(item =>
+                    item.name.toLowerCase().includes(arg.toLowerCase())) || fs;
+                if (target.type !== "folder") return terminalPrint(win, "不是有效的目录。");
+                const lines = target.children.map(item =>
+                    (item.type === "folder" ? "<DIR>   " : "        ") + item.name);
+                terminalPrint(win, (lines.length ? lines.join("\n") : "（空目录）") + "\n共 " + lines.length + " 项");
+                break;
+            }
+            case "tree": {
+                const lines = [];
+                (function walk(node, prefix) {
+                    node.children.forEach((child, i) => {
+                        const last = i === node.children.length - 1;
+                        lines.push(prefix + (last ? "└─ " : "├─ ") + child.name);
+                        if (child.type === "folder") walk(child, prefix + (last ? "   " : "│  "));
+                    });
+                })(fs, "");
+                terminalPrint(win, lines.join("\n") || "（空）");
+                break;
+            }
+            case "open":
+                if (apps[arg]) {
+                    openApp(arg);
+                    terminalPrint(win, "正在打开 " + apps[arg].title + " …");
+                } else {
+                    terminalPrint(win, "未知应用：" + (arg || "(空)") + "，输入 help 查看列表。");
+                }
+                break;
+            case "cls":
+                $("[data-term-out]", win).textContent = "";
+                break;
+            case "shutdown":
+                terminalPrint(win, "😄 这是模拟器，不能真的关机。");
+                break;
+            default:
+                terminalPrint(win, "'" + cmd + "' 不是内部或外部命令，也不是可运行的程序。输入 help 查看命令。");
+        }
+    }
+
+    /* ================= 扫雷 ================= */
+
+    function mineInit(win) {
+        const rows = 9, cols = 9, total = 10;
+        const cells = [];
+        for (let i = 0; i < rows * cols; i++) cells.push({ mine: false, open: false, flag: false, n: 0 });
+
+        let placed = 0;
+        while (placed < total) {
+            const i = Math.floor(Math.random() * cells.length);
+            if (!cells[i].mine) { cells[i].mine = true; placed++; }
+        }
+
+        const neighbors = i => {
+            const r = Math.floor(i / cols), c = i % cols, list = [];
+            for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+                if (!dr && !dc) continue;
+                const nr = r + dr, nc = c + dc;
+                if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) list.push(nr * cols + nc);
+            }
+            return list;
+        };
+
+        cells.forEach((cell, i) => {
+            cell.n = neighbors(i).filter(j => cells[j].mine).length;
+        });
+
+        win._mine = { rows, cols, total, cells, neighbors, over: false, start: Date.now(), opened: 0 };
+        mineRender(win);
+    }
+
+    function mineRender(win) {
+        const grid = $("[data-mine-grid]", win);
+        const state = win._mine;
+        if (!grid || !state) return;
+        grid.innerHTML = state.cells.map((cell, i) => {
+            let cls = "mine-cell" + (cell.open ? " open" : "");
+            let label = "";
+            if (cell.open) {
+                if (cell.mine) { cls += " boom"; label = "💥"; }
+                else if (cell.n) { cls += " mine-n" + cell.n; label = String(cell.n); }
+            } else if (cell.flag) {
+                label = "🚩";
+            }
+            return `<div class="${cls}" data-mine-cell="${i}">${label}</div>`;
+        }).join("");
+
+        $("[data-mine-mines]", win).textContent = "💣 " +
+            (state.total - state.cells.filter(c => c.flag).length);
+    }
+
+    function mineOpen(win, index) {
+        const state = win._mine;
+        if (!state || state.over) return;
+        const cell = state.cells[index];
+        if (!cell || cell.open || cell.flag) return;
+
+        cell.open = true;
+        if (cell.mine) {
+            state.over = true;
+            state.cells.forEach(c => { if (c.mine) c.open = true; });
+            mineRender(win);
+            return notify("💥 踩到雷了！点击“重新开始”再来一局");
+        }
+
+        if (cell.n === 0) {
+            const stack = [index];
+            while (stack.length) {
+                const cur = stack.pop();
+                state.neighbors(cur).forEach(j => {
+                    const nCell = state.cells[j];
+                    if (!nCell.open && !nCell.flag && !nCell.mine) {
+                        nCell.open = true;
+                        if (nCell.n === 0) stack.push(j);
+                    }
+                });
+            }
+        }
+
+        const safeCount = state.cells.length - state.total;
+        const opened = state.cells.filter(c => c.open && !c.mine).length;
+        mineRender(win);
+
+        if (opened === safeCount) {
+            state.over = true;
+            state.cells.filter(c => c.mine).forEach(c => { c.flag = true; });
+            mineRender(win);
+            const seconds = Math.round((Date.now() - state.start) / 1000);
+            notify("🎉 通关！用时 " + seconds + " 秒");
+        }
+    }
+
+    function mineFlag(win, index) {
+        const state = win._mine;
+        if (!state || state.over) return;
+        const cell = state.cells[index];
+        if (!cell || cell.open) return;
+        cell.flag = !cell.flag;
+        mineRender(win);
+    }
+
+    /* ================= 任务管理器 ================= */
+
+    function taskmgrRender(win, keepSelect) {
+        const body = $("[data-task-body]", win);
+        if (!body) return;
+        const selected = keepSelect ? win.dataset.selectedTask : "";
+
+        const rows = [];
+        rows.push({ app: "taskmgr", cpu: (Math.random() * 2 + 0.4).toFixed(1), mem: (Math.random() * 30 + 42).toFixed(0) });
+        for (const [name, item] of windows) {
+            if (name === "taskmgr") continue;
+            rows.push({
+                app: name,
+                cpu: (Math.random() * 8 + 0.5).toFixed(1),
+                mem: (Math.random() * 120 + 30).toFixed(0)
+            });
+        }
+
+        body.innerHTML = rows.map(row => `
+            <tr data-task-app="${row.app}" class="${row.app === selected ? "selected" : ""}">
+                <td>${apps[row.app].icon} ${apps[row.app].title}</td>
+                <td>${row.cpu}%</td>
+                <td>${row.mem} MB</td>
+                <td style="color:var(--muted)">正在运行</td>
+            </tr>`).join("") ||
+            `<tr><td colspan="4" class="empty">没有其他正在运行的应用。</td></tr>`;
+    }
+
+    function taskmgrEnd(win) {
+        const target = win.dataset.selectedTask;
+        if (!target) return notify("请先选择要结束的任务");
+        if (target === "taskmgr") return notify("不能结束任务管理器自身");
+        const targetWin = windows.get(target);
+        if (!targetWin) return notify("该应用已关闭");
+        if (targetWin._mediaStop) targetWin._mediaStop();
+        windows.delete(target);
+        targetWin.remove();
+        delete win.dataset.selectedTask;
+        updateTaskbar();
+        taskmgrRender(win);
+        notify("已结束任务：" + apps[target].title);
+    }
+
+    /* ================= 日历 ================= */
+
+    function calendarRender(win) {
+        const grid = $("[data-cal-grid]", win);
+        const title = $("[data-cal-title]", win);
+        if (!grid || !title) return;
+
+        const now = new Date();
+        const view = new Date(now.getFullYear(), now.getMonth() + (win._calMonth || 0), 1);
+        title.textContent = view.getFullYear() + " 年 " + (view.getMonth() + 1) + " 月";
+
+        const weekDays = ["日", "一", "二", "三", "四", "五", "六"];
+        const firstDay = view.getDay();
+        const daysInMonth = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+        const prevDays = new Date(view.getFullYear(), view.getMonth(), 0).getDate();
+        const isThisMonth = win._calMonth === 0;
+
+        let html = weekDays.map(d => `<div class="cal-wd">${d}</div>`).join("");
+        for (let i = firstDay - 1; i >= 0; i--) {
+            html += `<div class="cal-day dim">${prevDays - i}</div>`;
+        }
+        for (let d = 1; d <= daysInMonth; d++) {
+            const today = isThisMonth && d === now.getDate();
+            html += `<div class="cal-day${today ? " today" : ""}">${d}</div>`;
+        }
+        const rest = (7 - (firstDay + daysInMonth) % 7) % 7;
+        for (let d = 1; d <= rest; d++) {
+            html += `<div class="cal-day dim">${d}</div>`;
+        }
+        grid.innerHTML = html;
+    }
+
+    /* ================= 音乐播放器 ================= */
+
+    const MEDIA_TRACKS = [
+        { name: "小星星", notes: [[262,.4],[262,.4],[392,.4],[392,.4],[440,.4],[440,.4],[392,.8],[349,.4],[349,.4],[330,.4],[330,.4],[294,.4],[294,.4],[262,.8]] },
+        { name: "欢乐颂", notes: [[330,.4],[330,.4],[349,.4],[392,.4],[392,.4],[349,.4],[330,.4],[294,.4],[262,.4],[262,.4],[294,.4],[330,.4],[330,.6],[294,.2],[294,.8]] },
+        { name: "致爱丽丝", notes: [[330,.3],[311,.3],[330,.3],[311,.3],[330,.3],[494,.3],[247,.3],[262,.3],[220,.6]] }
+    ];
+
+    function mediaPlayTrack(win, index) {
+        if (win._mediaStop) win._mediaStop();
+
+        const track = MEDIA_TRACKS[index];
+        if (!track) return;
+
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return notify("当前浏览器不支持音频播放");
+
+        const ctx = new AudioCtx();
+        const gain = ctx.createGain();
+        gain.gain.value = 0.16;
+        gain.connect(ctx.destination);
+
+        let t = ctx.currentTime + 0.05;
+        const stopTimers = [];
+        track.notes.forEach(([freq, dur]) => {
+            const osc = ctx.createOscillator();
+            const g = ctx.createGain();
+            osc.type = "triangle";
+            osc.frequency.value = freq;
+            g.gain.setValueAtTime(0.0001, t);
+            g.gain.exponentialRampToValueAtTime(1, t + 0.03);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + dur * 0.92);
+            osc.connect(g);
+            g.connect(gain);
+            osc.start(t);
+            osc.stop(t + dur);
+            t += dur;
+            stopTimers.push(osc);
+        });
+
+        const nowBox = $("[data-media-now]", win);
+        const titleBox = $("[data-media-title]", win);
+        if (nowBox) nowBox.classList.add("playing");
+        if (titleBox) titleBox.textContent = "正在播放：" + track.name;
+
+        const totalMs = (t - ctx.currentTime) * 1000 + 300;
+        const timer = setTimeout(stop, totalMs);
+
+        function stop() {
+            clearTimeout(timer);
+            stopTimers.forEach(osc => { try { osc.stop(); } catch {} });
+            try { ctx.close(); } catch {}
+            win._mediaStop = null;
+            if (nowBox) nowBox.classList.remove("playing");
+            if (titleBox) titleBox.textContent = "未在播放";
+        }
+
+        win._mediaStop = stop;
+    }
+
+    /* ================= 上下文菜单 ================= */
 
     function showContextMenu(x, y, state) {
         contextState = state;
